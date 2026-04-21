@@ -103,7 +103,8 @@ export default function ProjectsSection() {
 
       <div className="section-footer">
         <a
-          href="https://syfaarizal.github.io/sicoder-main-portfolio/projects/indexprojects.html"
+          href="/projects"
+     
           className="btn btn-outline"
           target="_blank" rel="noopener noreferrer"
         >
