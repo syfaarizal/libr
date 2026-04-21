@@ -12,6 +12,7 @@ import {
   type SortOption,
 } from '../../data/projectsData';
 import styles from './projects.module.css';
+import { Link } from 'react-router-dom';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -245,7 +246,7 @@ export default function ProjectsPage() {
       {/* Loading Screen */}
       <div
         className={`${styles.loadingScreen} ${!isLoading ? styles.loaded : ''}`}
-        aria-hidden={!isLoading}
+        aria-hidden={!isLoading ? 'true' : 'false'}
       >
         <div className={styles.loadingSpinner}>
           <div className={styles.spinnerCircle} />
@@ -638,27 +639,27 @@ export default function ProjectsPage() {
 
         <div className="footer-bottom">
           <div className="footer-socials">
-            <a
-              href="https://github.com/syfaarizal"
+            <Link
+              to="https://github.com/syfaarizal"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-github" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/syifaarizal/"
+            </Link>
+            <Link
+              to="https://www.linkedin.com/in/syifaarizal/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-linkedin" />
-            </a>
-            <a
-              href="https://www.instagram.com/syfaarizal/"
+            </Link>
+            <Link
+              to="https://www.instagram.com/syfaarizal/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-instagram" />
-            </a>
+            </Link>
           </div>
           <p className="footer-copyright">
             Made with ❤️ and <code>&lt;/&gt;</code> by Syifa F.A

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { projects } from '../data';
 import { Project } from '../types';
+import { Link } from 'react-router-dom';
 
 type Filter = 'all' | Project['category'];
 
@@ -102,15 +103,10 @@ export default function ProjectsSection() {
       </div>
 
       <div className="section-footer">
-        <a
-          href="/projects"
-     
-          className="btn btn-outline"
-          target="_blank" rel="noopener noreferrer"
-        >
+        <Link to="/projects" className="btn btn-outline">
           <span>View All Projects</span>
           <i className="fas fa-external-link-alt"></i>
-        </a>
+        </Link>
       </div>
     </section>
   );
