@@ -238,7 +238,7 @@ export default function DayPostLayout({
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}
         >
-          <img src="/public/assets/LIBR-logo-nobg.png" alt="Logo LIBR" />
+          <img src="/assets/LIBR-logo-nobg.png" alt="Logo LIBR" />
         </button>
       </div>
     </div>

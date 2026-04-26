@@ -83,7 +83,7 @@ export default function HeroSection() {
           <div className="home-img">
             <div className="image-container">
               <img
-                src="/public/assets/LIBR-logo-nobg.png"
+                src="/assets/LIBR-logo-nobg.png"
                 alt="SICODER Logo"
                 className="logo-3d"
               />

@@ -19,7 +19,7 @@ export default function BackToTop() {
       onClick={(e) => { e.preventDefault(); scrollToTop(); }}
       aria-hidden={!visible}
     >
-      <img src="/public/assets/LIBR-logo-nobg.png" alt="Logo LIBR" />
+      <img src="/assets/LIBR-logo-nobg.png" alt="Logo LIBR" />
     </a>
   );
 }

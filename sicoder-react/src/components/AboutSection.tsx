@@ -99,7 +99,7 @@ export default function AboutSection() {
         <div className="about-visual">
           <div className="floating-avatar">
             <div className="avatar-container">
-              <img src="/public/assets/Syifa-Anime.png" alt="Syifa Fauziyah Arizal" className="avatar-image" />
+              <img src="/assets/Syifa-Anime.png" alt="Syifa Fauziyah Arizal" className="avatar-image" />
               <div className="avatar-overlay"></div>
               <div className="tech-tags">
                 <span className="tech-tag" style={{ '--i': 1 } as React.CSSProperties}>HTML5</span>
