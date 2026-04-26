@@ -112,9 +112,14 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         <div className={styles.projectActions}>
-          <a href={project.detail} className="btn btn-outline">
-            <span>View Details</span>
-            <i className="fas fa-info-circle" />
+          <a
+            href={project.code}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline"
+          >
+            <span>Source Code</span>
+            <i className="fab fa-github" />
           </a>
           <a
             href={project.demo}
@@ -256,21 +261,18 @@ export default function ProjectsPage() {
 
       {/* Header */}
       <header className={`header ${styles.headerDark}`}>
-        <a href="../index.html" className="logo">
+        <Link to="/" className="logo">
           SICO<span>DER</span> .
-        </a>
+        </Link>
       </header>
 
       {/* ── Hero Section ── */}
       <section className={`${styles.projectsHero} section-card`}>
         <div className={styles.heroContent}>
-          <a
-            href="https://syfaarizal.github.io/sicoder-main-portfolio/index.html#project"
-            className={styles.backToPortfolio}
-          >
+          <Link to="/#project" className={styles.backToPortfolio}>
             <i className="fas fa-arrow-left" />
             <span>Back to Portfolio</span>
-          </a>
+          </Link>
 
           <div className={styles.heroText}>
             <h1 className="title reveal-text">
@@ -485,9 +487,14 @@ export default function ProjectsPage() {
                 </p>
 
                 <div className="action-buttons">
-                  <a href={featuredProject.detail} className="btn btn-primary">
-                    <span>View Case Study</span>
-                    <i className="fas fa-arrow-right" />
+                  <a
+                    href={featuredProject.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                  >
+                    <span>Source Code</span>
+                    <i className="fab fa-github" />
                   </a>
                   <a
                     href={featuredProject.demo}
@@ -560,7 +567,7 @@ export default function ProjectsPage() {
         <div className="footer-container">
           <div className="footer-brand">
             <div className="footer-logo">
-              <img src="../assets/img/sicoder-logo.png" alt="SICODER Logo" />
+              <img src="/assets/sicoder-logo.png" alt="SICODER Logo" />
               <div className="logo-glow" />
             </div>
             <p className="footer-tagline">
@@ -594,7 +601,7 @@ export default function ProjectsPage() {
               <h4>Connect</h4>
               <ul>
                 <li>
-                  <a href="../index.html#contact">Collaborate</a>
+                  <Link to="/#contact">Collaborate</Link>
                 </li>
                 <li>
                   <a href="mailto:syifairgi@gmail.com">Contact</a>
@@ -639,27 +646,27 @@ export default function ProjectsPage() {
 
         <div className="footer-bottom">
           <div className="footer-socials">
-            <Link
-              to="https://github.com/syfaarizal"
+            <a
+              href="https://github.com/syfaarizal"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-github" />
-            </Link>
-            <Link
-              to="https://www.linkedin.com/in/syifaarizal/"
+            </a>
+            <a
+              href="https://www.linkedin.com/in/syifaarizal/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-linkedin" />
-            </Link>
-            <Link
-              to="https://www.instagram.com/syfaarizal/"
+            </a>
+            <a
+              href="https://www.instagram.com/syfaarizal/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-instagram" />
-            </Link>
+            </a>
           </div>
           <p className="footer-copyright">
             Made with ❤️ and <code>&lt;/&gt;</code> by Syifa F.A

@@ -23,6 +23,7 @@ import BlogIndexPage from './pages/blog/BlogIndexPage';
 import { Day1Page, Day2Page, Day3Page, Day4Page, Day5Page, Day6Page } from './pages/blog/days-challenge';
 import { HtmlIntroPage, HtmlIntro2Page } from './pages/blog/html-modul';
 import { Css1Page, Css2Page, Css3Page, Css4Page } from './pages/blog/css-modul';
+import ProjectsPage from './pages/projects/ProjectsPage';
 import {
   Js1Page,
   Js2Page,
@@ -131,6 +132,7 @@ export default function App() {
       <Routes>
         {/* Portfolio home */}
         <Route path="/" element={<PortfolioHome />} />
+        <Route path="/projects" element={<ProjectsPage />} />
 
         {/* Blog index */}
         <Route path="/blog" element={<BlogIndexPage />} />
