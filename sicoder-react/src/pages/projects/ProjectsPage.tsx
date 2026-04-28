@@ -11,7 +11,7 @@ import {
   type ProjectTech,
   type SortOption,
 } from '../../data/projectsData';
-import styles from '../../styles/projects.module.css';
+import styles from '../../styles/projects/projects.module.css';
 import { Link } from 'react-router-dom';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
