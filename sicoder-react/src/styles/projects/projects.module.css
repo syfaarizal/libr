@@ -495,12 +495,43 @@
   font-weight: 500;
 }
 
+.btnOutline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btnOutline:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btnPrimary {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
 .projectActions {
   display: flex;
   gap: var(--spacing-sm);
 }
 
-.projectActions .btn {
+.projectActions :global(.btn) {
   flex: 1;
   padding: 0.8rem 1.5rem;
   font-size: 1.3rem;

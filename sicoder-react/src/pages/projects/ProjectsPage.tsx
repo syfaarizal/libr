@@ -112,7 +112,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         <div className={styles.projectActions}>
-          <a href={project.detail} className="btn btn-outline">
+          <a href={project.detail} className={`btn ${styles.btnOutline}`}>
             <span>View Details</span>
             <i className="fas fa-info-circle" />
           </a>
@@ -120,7 +120,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary"
+            className={`btn ${styles.btnPrimary}`}
           >
             <span>Live Demo</span>
             <i className="fas fa-external-link-alt" />
@@ -670,7 +670,7 @@ export default function ProjectsPage() {
         onClick={handleBackToTop}
         aria-label="Back to top"
       >
-        <img src="/public/assets/LIBR-logo-nobg.png" alt="logo LIBR" />
+        <img src="/assets/LIBR-logo-nobg.png" alt="logo LIBR" />
       </button>
     </>
   );
