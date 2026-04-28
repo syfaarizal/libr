@@ -1,6 +1,19 @@
 /* src/pages/projects/projects.module.css */
 
 /* ── Hero ──────────────────────────────────────────── */
+.sectionCardProjects {
+    background: var(--surface-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-lg) auto;
+    max-width: 1400px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+}
+
+
 .projectsHero {
   min-height: 80vh;
   display: flex;

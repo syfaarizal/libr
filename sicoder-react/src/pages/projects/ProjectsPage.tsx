@@ -112,14 +112,9 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         <div className={styles.projectActions}>
-          <a
-            href={project.code}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline"
-          >
-            <span>Source Code</span>
-            <i className="fab fa-github" />
+          <a href={project.detail} className="btn btn-outline">
+            <span>View Details</span>
+            <i className="fas fa-info-circle" />
           </a>
           <a
             href={project.demo}
@@ -267,7 +262,7 @@ export default function ProjectsPage() {
       </header>
 
       {/* ── Hero Section ── */}
-      <section className={`${styles.projectsHero} section-card`}>
+      <section className={`${styles.projectsHero} ${styles.sectionCardProjects}`}>
         <div className={styles.heroContent}>
           <Link to="/#project" className={styles.backToPortfolio}>
             <i className="fas fa-arrow-left" />
@@ -327,7 +322,7 @@ export default function ProjectsPage() {
       <main className="projects-main">
 
         {/* ── Filter Section ── */}
-        <section className={`${styles.projectsFilterSection} section-card`}>
+        <section className={`${styles.projectsFilterSection} ${styles.sectionCardProjects}`}>
           <div className={styles.sectionHeader}>
             <div>
               <h2 className="title">
@@ -393,7 +388,7 @@ export default function ProjectsPage() {
         </section>
 
         {/* ── Projects Grid ── */}
-        <section id="projects-grid" className="section-card">
+        <section id="projects-grid" className={styles.sectionCardProjects}>
           <div className={styles.sectionHeader}>
             <div className={styles.headerLeft}>
               <h2 className="title">
@@ -457,7 +452,7 @@ export default function ProjectsPage() {
 
         {/* ── Featured Project ── */}
         {featuredProject && (
-          <section className={`${styles.featuredProject} section-card`}>
+          <section className={`${styles.featuredProject} ${styles.sectionCardProjects}`}>
             <div className={styles.featuredBadge}>
               <i className="fas fa-star" />
               <span>Featured Project</span>
@@ -487,14 +482,9 @@ export default function ProjectsPage() {
                 </p>
 
                 <div className="action-buttons">
-                  <a
-                    href={featuredProject.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary"
-                  >
-                    <span>Source Code</span>
-                    <i className="fab fa-github" />
+                  <a href={featuredProject.detail} className="btn btn-primary">
+                    <span>View Case Study</span>
+                    <i className="fas fa-arrow-right" />
                   </a>
                   <a
                     href={featuredProject.demo}
@@ -533,7 +523,7 @@ export default function ProjectsPage() {
         )}
 
         {/* ── Timeline Section ── */}
-        <section className={`${styles.timelineSection} section-card`}>
+        <section className={`${styles.timelineSection} ${styles.sectionCardProjects}`}>
           <div className={styles.sectionHeader}>
             <div>
               <h2 className="title">
