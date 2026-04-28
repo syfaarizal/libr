@@ -255,9 +255,9 @@ export default function ProjectsPage() {
       </div>
 
       {/* Header */}
-      <header className={`header ${styles.headerDark}`}>
+      <header className={`${styles.header} ${styles.headerDark}`}>
         <Link to="/" className="logo">
-          SICO<span>DER</span> .
+          LIBR
         </Link>
       </header>
 
@@ -670,7 +670,7 @@ export default function ProjectsPage() {
         onClick={handleBackToTop}
         aria-label="Back to top"
       >
-        <i className="fas fa-arrow-up" />
+        <img src="/public/assets/LIBR-logo-nobg.png" alt="logo LIBR" />
       </button>
     </>
   );

@@ -1,6 +1,4 @@
-/* src/pages/projects/projects.module.css */
-
-/* ── Hero ──────────────────────────────────────────── */
+/* Hero */
 .sectionCardProjects {
     background: var(--surface-color);
     border-radius: var(--radius-lg);
@@ -37,6 +35,20 @@
     transparent 50%
   );
   z-index: -1;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all var(--transition-base);
+    border-bottom: 1px solid transparent;
 }
 
 .headerDark {
@@ -720,23 +732,25 @@
   position: fixed;
   bottom: 3rem;
   right: 3rem;
-  width: 48px;
-  height: 48px;
-  background: var(--gradient-primary);
+  width: auto;
+  height: auto;
   color: white;
   border: none;
-  border-radius: 50%;
   font-size: 1.8rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-lg);
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
   transition: all var(--transition-base);
   z-index: 999;
+}
+
+.backToTop img {
+  width: 70px;
+  height: 70px;
 }
 
 .backToTop.visible {
@@ -746,8 +760,9 @@
 }
 
 .backToTop:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--glow-primary);
+  scale: calc(1.2);
+  transform: rotate(5deg);
+  filter: contrast(300%);
 }
 
 /* ── Loading Screen ─────────────────────────────────── */
