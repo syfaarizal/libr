@@ -496,16 +496,17 @@
 }
 
 .btnOutline {
-  background: transparent;
-  color: var(--primary-color);
+  background: var(--primary-color);
+  color: var(--text-color);
   border: 2px solid var(--primary-color);
+  transition: all var(--transition-base);
 }
 
 .btnOutline:hover {
   background: var(--primary-color);
   color: white;
   border-color: transparent;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 

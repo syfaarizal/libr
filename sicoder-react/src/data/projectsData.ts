@@ -34,7 +34,7 @@ export const projectsData: Project[] = [
     date: '2025-09-15',
     featured: true,
     image: '/assets/showcase-review.png',
-    demo: 'https://syfaarizal.github.io/showcase-login-page/',
+    demo: 'https://loginlab.vercel.app/',
     code: 'https://github.com/syfaarizal/showcase-login-page',
     detail: 'https://github.com/syfaarizal/showcase-login-page',
   },
