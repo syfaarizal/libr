@@ -481,7 +481,7 @@ export default function ProjectsPage() {
                   design patterns.
                 </p>
 
-                <div className="action-buttons">
+                <div className={`${styles.featuredActions}`}>
                   <a href={featuredProject.detail} className="btn btn-primary">
                     <span>View Case Study</span>
                     <i className="fas fa-arrow-right" />
