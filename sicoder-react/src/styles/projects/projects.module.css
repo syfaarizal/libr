@@ -839,7 +839,7 @@
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 4px;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 @keyframes spin {
