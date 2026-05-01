@@ -1,6 +1,3 @@
-// src/pages/projects/ProjectDetail5.tsx
-// Detail page for: Bisik-Bisik | Anonymous Chat
-
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/projects/project-detail.module.css';
 

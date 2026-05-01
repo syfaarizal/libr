@@ -1,6 +1,3 @@
-// src/pages/projects/ProjectDetail1.tsx
-// Detail page for: Login Page Showcase
-
 import { useState, useEffect, useRef } from 'react';
 import styles from '../../styles/projects/project-detail.module.css';
 

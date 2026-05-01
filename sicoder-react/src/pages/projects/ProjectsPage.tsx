@@ -1,5 +1,3 @@
-// src/pages/projects/ProjectsPage.tsx
-
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import {
   projectsData,
