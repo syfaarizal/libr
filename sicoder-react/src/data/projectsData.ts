@@ -36,7 +36,7 @@ export const projectsData: Project[] = [
     image: '/assets/showcase-review.png',
     demo: 'https://loginlab.vercel.app/',
     code: 'https://github.com/syfaarizal/showcase-login-page',
-    detail: 'https://github.com/syfaarizal/showcase-login-page',
+    detail: '/projects/detail/1',
   },
   {
     id: 2,
@@ -50,7 +50,7 @@ export const projectsData: Project[] = [
     image: '/assets/CVDigital.png',
     demo: 'https://syfaarizal.github.io/landing-page-sicoder/',
     code: 'https://github.com/syfaarizal/landing-page-sicoder',
-    detail: 'https://github.com/syfaarizal/landing-page-sicoder',
+    detail: '/projects/detail/2',
   },
   {
     id: 3,
@@ -64,7 +64,7 @@ export const projectsData: Project[] = [
     image: '/assets/CruisePoint.png',
     demo: 'https://syfaarizal.github.io/cruishpoint-indonesia/',
     code: 'https://github.com/syfaarizal/cruishpoint-indonesia',
-    detail: 'https://github.com/syfaarizal/cruishpoint-indonesia',
+    detail: '/projects/detail/3',
   },
   {
     id: 4,
@@ -78,7 +78,7 @@ export const projectsData: Project[] = [
     image: '/assets/review-pomodoro-focusflow.png',
     demo: 'https://pomodoro-focusflow.vercel.app/',
     code: 'https://github.com/syfaarizal/pomodoro-focusflow',
-    detail: 'https://github.com/syfaarizal/pomodoro-focusflow',
+    detail: '/projects/detail/4',
   },
   {
     id: 5,
@@ -92,7 +92,7 @@ export const projectsData: Project[] = [
     image: '/assets/bisik-bisik-preview.png',
     demo: 'https://bisik-bisik.vercel.app/',
     code: 'https://github.com/syfaarizal/bisik-bisik',
-    detail: 'https://github.com/syfaarizal/bisik-bisik',
+    detail: '/projects/detail/5',
   },
 ];
 
