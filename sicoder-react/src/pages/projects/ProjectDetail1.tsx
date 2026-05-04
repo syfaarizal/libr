@@ -213,7 +213,7 @@ export default function ProjectDetail1() {
       </section>
 
       {/* ── Main Content ── */}
-      <main className="container">
+      <main className={`container ${styles.detailPageMain}`}>
         <div className={styles.projectContentSection}>
 
           {/* ── Left: Detail Sections ── */}
