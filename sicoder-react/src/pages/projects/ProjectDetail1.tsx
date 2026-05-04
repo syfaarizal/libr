@@ -302,10 +302,10 @@ export default function ProjectDetail1() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/assets/img/img-showcase-login/login-page-basic-purple.png', alt: 'Login Design 1', title: 'Modern Purple Theme',  caption: 'Clean design with gradient effects' },
-                  { src: '/assets/img/img-showcase-login/login-page-blackcat.png',     alt: 'Login Design 2', title: 'Dark Cat Theme',        caption: 'Minimalist dark mode design' },
-                  { src: '/assets/img/img-showcase-login/login-page-panorama.png',     alt: 'Login Design 3', title: 'Panorama Background',   caption: 'Full-screen background image' },
-                  { src: '/assets/img/img-showcase-login/review-bg-astronaut.png',     alt: 'Login Design 4', title: 'Astronaut Theme',       caption: 'Space-themed creative design' },
+                  { src: '/public/assets/img-showcase-login/login-page-basic-purple.png', alt: 'Login Design 1', title: 'Modern Purple Theme',  caption: 'Clean design with gradient effects' },
+                  { src: '/public/assets/img-showcase-login/login-page-blackcat.png',     alt: 'Login Design 2', title: 'Dark Cat Theme',        caption: 'Minimalist dark mode design' },
+                  { src: '/public/assets/img-showcase-login/login-page-panorama.png',     alt: 'Login Design 3', title: 'Panorama Background',   caption: 'Full-screen background image' },
+                  { src: '/public/assets/img-showcase-login/review-bg-astronaut.png',     alt: 'Login Design 4', title: 'Astronaut Theme',       caption: 'Space-themed creative design' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />
@@ -357,13 +357,9 @@ export default function ProjectDetail1() {
                   <span>Source Code</span>
                   <i className="fab fa-github" />
                 </a>
-                <a href="#" className={styles.projectLinkBtn}>
-                  <span>Case Study PDF</span>
-                  <i className="fas fa-download" />
-                </a>
-                <a href="#" className={styles.projectLinkBtn}>
-                  <span>Design Files</span>
-                  <i className="fab fa-figma" />
+                <a href="https://syfaarizal.github.io/" target="_blank" rel="noopener noreferrer" className={styles.projectLinkBtn}>
+                  <span>Main Portfolio</span>
+                  <i className="fas fa-home" />
                 </a>
               </div>
             </div>
@@ -375,14 +371,19 @@ export default function ProjectDetail1() {
             >
               <h3><i className="fas fa-chart-bar" /> Project Stats</h3>
               <div className={styles.statsGrid}>
-                <div className={styles.statItem}>
-                  <div className={styles.statValue}>45</div>
-                  <div className={styles.statLabel}>Forks</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statValue}>25k</div>
-                  <div className={styles.statLabel}>Lines of Code</div>
-                </div>
+                {[
+                  { value: '3',    label: 'Tech Stack'   },
+                  { value: '50%',    label: 'Core Modules' },
+                  { value: '100%', label: 'Showcase'    },
+                  { value: 'RT',   label: 'Real-Time'    },
+                  { value: '0',    label: 'Data Stored'  },
+                  { value: 'A',    label: 'Accessibility' },
+                ].map((s) => (
+                  <div key={s.label} className={styles.statItem}>
+                    <div className={styles.statValue}>{s.value}</div>
+                    <div className={styles.statLabel}>{s.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
