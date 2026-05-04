@@ -179,6 +179,20 @@
   box-shadow: var(--glow-primary);
 }
 
+.projectStatusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: 1.2rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
 /* ── Project Meta ───────────────────────────────────── */
 .projectMetaDetail {
   display: flex;
@@ -474,6 +488,67 @@
   color: var(--primary-color);
 }
 
+.roadmap {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.roadmapItem {
+  padding: var(--spacing-md);
+  background: var(--surface-color);
+  border-left: 4px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.roadmapItem h4 {
+  margin: var(--spacing-sm) 0 0.8rem;
+  font-size: 1.7rem;
+  color: var(--text-color);
+}
+
+.roadmapItem p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.roadmapStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.roadmapCompleted {
+  border-left-color: #2ecc71;
+}
+
+.roadmapCompleted .roadmapStatus {
+  background: rgba(46, 204, 113, 0.18);
+  color: #2ecc71;
+}
+
+.roadmapInProgress {
+  border-left-color: #f39c12;
+}
+
+.roadmapInProgress .roadmapStatus {
+  background: rgba(243, 156, 18, 0.18);
+  color: #f39c12;
+}
+
+.roadmapPlanned {
+  border-left-color: #95a5a6;
+}
+
+.roadmapPlanned .roadmapStatus {
+  background: rgba(149, 165, 166, 0.18);
+  color: #95a5a6;
+}
+
 /* ── Sidebar ────────────────────────────────────────── */
 .projectSidebar {
   display: flex;
@@ -512,6 +587,13 @@
 }
 .sidebarCard h3 i {
   color: var(--primary-color);
+}
+
+.sidebarNote {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 /* ── Project Link Buttons ───────────────────────────── */
@@ -716,6 +798,10 @@
 @media (max-width: 768px) {
   .detailPageMain {
     padding-inline: 0;
+  }
+  .projectStatusBadge {
+    display: inline-flex;
+    margin: 1rem 0 0;
   }
   :global(.header).projectDetailHeader { padding: 1.4rem 5%; }
   .projectMetaDetail { flex-direction: column; gap: var(--spacing-sm); }

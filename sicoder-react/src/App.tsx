@@ -25,6 +25,9 @@ import { HtmlIntroPage, HtmlIntro2Page } from './pages/blog/html-modul';
 import { Css1Page, Css2Page, Css3Page, Css4Page } from './pages/blog/css-modul';
 import ProjectsPage from './pages/projects/ProjectsPage';
 import ProjectDetail1 from './pages/projects/ProjectDetail1';
+import ProjectDetail2 from './pages/projects/ProjectDetail2';
+import ProjectDetail3 from './pages/projects/ProjectDetail3';
+import ProjectDetail4 from './pages/projects/ProjectDetail4';
 import ProjectDetail5 from './pages/projects/ProjectDetail5';
 import {
   Js1Page,
@@ -136,6 +139,9 @@ export default function App() {
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/detail/1" element={<ProjectDetail1 />} />
+        <Route path="/projects/detail/2" element={<ProjectDetail2 />} />
+        <Route path="/projects/detail/3" element={<ProjectDetail3 />} />
+        <Route path="/projects/detail/4" element={<ProjectDetail4 />} />
         <Route path="/projects/detail/5" element={<ProjectDetail5 />} />
 
         {/* Blog index */}
