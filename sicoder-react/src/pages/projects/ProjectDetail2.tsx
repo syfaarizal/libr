@@ -312,9 +312,9 @@ export default function ProjectDetail2() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/assets/img/img-cv-digital/skills.png', alt: 'Digital CV Hero Section', title: 'Hero Section', caption: 'Introduction with typing animation' },
-                  { src: '/assets/img/img-cv-digital/hero.png', alt: 'Skills Section', title: 'Skills Showcase', caption: 'Interactive skill visualization' },
-                  { src: '/assets/img/img-cv-digital/projects.png', alt: 'Projects Section', title: 'Projects Grid', caption: 'Filterable project portfolio' },
+                  { src: '/public/assets/img-cv-digital/skills.png', alt: 'Digital CV Hero Section', title: 'Hero Section', caption: 'Introduction with typing animation' },
+                  { src: '/public/assets/img-cv-digital/hero.png', alt: 'Skills Section', title: 'Skills Showcase', caption: 'Interactive skill visualization' },
+                  { src: '/public/assets/img-cv-digital/projects.png', alt: 'Projects Section', title: 'Projects Grid', caption: 'Filterable project portfolio' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />

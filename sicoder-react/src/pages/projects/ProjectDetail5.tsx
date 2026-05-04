@@ -345,9 +345,9 @@ export default function ProjectDetail5() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/assets/img/img-bisik/chat-room.png',    alt: 'Chat Room',   title: 'Chat Room',    caption: 'Real-time anonymous messaging interface' },
-                  { src: '/assets/img/img-bisik/lobby-room.png',   alt: 'Lobby',       title: 'Lobby',        caption: 'Browse and join available chat rooms' },
-                  { src: '/assets/img/img-bisik/landing-page.png', alt: 'Landing Page',title: 'Landing Page', caption: 'One-click entry — no registration needed' },
+                  { src: '/public/assets/img-bisik/chat-room.png',    alt: 'Chat Room',   title: 'Chat Room',    caption: 'Real-time anonymous messaging interface' },
+                  { src: '/public/assets/img-bisik/lobby-room.png',   alt: 'Lobby',       title: 'Lobby',        caption: 'Browse and join available chat rooms' },
+                  { src: '/public/assets/img-bisik/landing-page.png', alt: 'Landing Page',title: 'Landing Page', caption: 'One-click entry — no registration needed' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />

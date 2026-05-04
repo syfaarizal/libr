@@ -325,9 +325,9 @@ export default function ProjectDetail4() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/assets/img/img-focusflow/timer-interface.png', alt: 'Timer Interface', title: 'Main Timer', caption: 'Clean interface with session controls' },
-                  { src: '/assets/img/img-focusflow/settings-panel.png', alt: 'Settings Panel', title: 'Settings', caption: 'Customizable timer durations' },
-                  { src: '/assets/img/img-focusflow/mobile-view.png', alt: 'Mobile View', title: 'Mobile View', caption: 'Responsive design for all devices' },
+                  { src: '/public/assets/img-focusflow/timer-interface.png', alt: 'Timer Interface', title: 'Main Timer', caption: 'Clean interface with session controls' },
+                  { src: '/public/assets/img-focusflow/settings-panel.png', alt: 'Settings Panel', title: 'Settings', caption: 'Customizable timer durations' },
+                  { src: '/public/assets/img-focusflow/mobile-view.png', alt: 'Mobile View', title: 'Mobile View', caption: 'Responsive design for all devices' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />

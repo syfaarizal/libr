@@ -312,9 +312,9 @@ export default function ProjectDetail3() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/assets/img/img-cruise-point/hero.png', alt: 'CruisePoint Hero Section', title: 'Hero Section', caption: 'Immersive banner with call-to-action' },
-                  { src: '/assets/img/img-cruise-point/about.png', alt: 'About Section', title: 'About', caption: 'Detailed information about CruisePoint' },
-                  { src: '/assets/img/img-cruise-point/pricipals.png', alt: 'Principals Section', title: 'Principals', caption: 'Core values and mission of CruisePoint' },
+                  { src: '/public/assets/img-cruise-point/hero.png', alt: 'CruisePoint Hero Section', title: 'Hero Section', caption: 'Immersive banner with call-to-action' },
+                  { src: '/public/assets/img-cruise-point/about.png', alt: 'About Section', title: 'About', caption: 'Detailed information about CruisePoint' },
+                  { src: '/public/assets/img-cruise-point/principals.png', alt: 'Principals Section', title: 'Principals', caption: 'Core values and mission of CruisePoint' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />
