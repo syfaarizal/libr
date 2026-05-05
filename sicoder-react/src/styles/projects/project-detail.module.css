@@ -118,6 +118,35 @@
   z-index: 1;
 }
 
+.projectHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.projectHeader :global(.title) {
+  margin: 0;
+  font-size: clamp(3.8rem, 6vw, 6.4rem);
+  line-height: 1.08;
+  color: var(--text-color);
+  text-wrap: balance;
+}
+
+.projectHeader :global(.title.reveal-text) {
+  opacity: 1;
+  transform: none;
+}
+
+.projectHeader :global(.subtitle) {
+  margin: 0;
+  max-width: 68rem;
+  font-size: clamp(1.7rem, 2.2vw, 2rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .detailPageMain {
   width: min(100%, 1320px);
   margin-inline: auto;
