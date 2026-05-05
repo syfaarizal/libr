@@ -396,6 +396,13 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-md);
   margin-top: var(--spacing-md);
+  width: calc(100% + 2 * var(--spacing-lg));
+  max-width: none;
+  margin-left: calc(-1 * var(--spacing-lg));
+  margin-right: calc(-1 * var(--spacing-lg));
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+  box-sizing: border-box;
 }
 .galleryItem {
   border-radius: var(--radius-lg);
