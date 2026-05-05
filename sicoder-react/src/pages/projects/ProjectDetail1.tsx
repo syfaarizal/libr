@@ -169,6 +169,11 @@ export default function ProjectDetail1() {
         </div>
       </div>
 
+      {/* Header */}
+      <header className="header header-dark">
+        <a href="/" className="logo">SICO<span>DER</span> .</a>
+      </header>
+
       {/* ── Hero ── */}
       <section className={`${styles.projectDetailHero} section-card`}>
         <div className={styles.achievementBadge}>

@@ -157,6 +157,11 @@ export default function ProjectDetail2() {
         </div>
       </div>
 
+      {/* Header */}
+      <header className="header header-dark">
+        <a href="/" className="logo">SICO<span>DER</span> .</a>
+      </header>
+
       <section className={`${styles.projectDetailHero} section-card`}>
         <div className={styles.achievementBadge}>
           <i className="fas fa-id-card" />

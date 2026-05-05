@@ -113,7 +113,7 @@
   gap: var(--spacing-md);
   width: 100%;
   max-width: 920px;
-  margin-inline: auto;
+  /* margin-inline: auto; */
   position: relative;
   z-index: 1;
 }
@@ -198,13 +198,13 @@
 .projectCategoryBadge {
   display: inline-block;
   padding: 0.8rem 1.6rem;
+  width: fit-content;
   background: var(--gradient-primary);
   color: white;
   border-radius: var(--radius-full);
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: var(--spacing-md);
   box-shadow: var(--glow-primary);
 }
 
