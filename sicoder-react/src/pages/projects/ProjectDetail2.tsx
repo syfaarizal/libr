@@ -312,9 +312,9 @@ export default function ProjectDetail2() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/public/assets/img-cv-digital/skills.png', alt: 'Digital CV Hero Section', title: 'Hero Section', caption: 'Introduction with typing animation' },
-                  { src: '/public/assets/img-cv-digital/hero.png', alt: 'Skills Section', title: 'Skills Showcase', caption: 'Interactive skill visualization' },
-                  { src: '/public/assets/img-cv-digital/projects.png', alt: 'Projects Section', title: 'Projects Grid', caption: 'Filterable project portfolio' },
+                  { src: '/assets/img-cv-digital/skills.png', alt: 'Digital CV Hero Section', title: 'Hero Section', caption: 'Introduction with typing animation' },
+                  { src: '/assets/img-cv-digital/hero.png', alt: 'Skills Section', title: 'Skills Showcase', caption: 'Interactive skill visualization' },
+                  { src: '/assets/img-cv-digital/projects.png', alt: 'Projects Section', title: 'Projects Grid', caption: 'Filterable project portfolio' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />
@@ -440,7 +440,7 @@ export default function ProjectDetail2() {
               ref={related1.ref as React.RefObject<HTMLAnchorElement>}
               className={`${styles.relatedProject} ${related1.animated ? styles.animated : ''}`}
             >
-              <img src="/assets/img/showcase-review.png" alt="Login Page Showcase" loading="lazy" />
+              <img src="/assets/showcase-review.png" alt="Login Page Showcase" loading="lazy" />
               <div className={styles.relatedProjectContent}>
                 <h3>Login Page Showcase</h3>
                 <p>Collection of creative login interfaces with animations</p>
@@ -452,7 +452,7 @@ export default function ProjectDetail2() {
               ref={related2.ref as React.RefObject<HTMLAnchorElement>}
               className={`${styles.relatedProject} ${related2.animated ? styles.animated : ''}`}
             >
-              <img src="/assets/img/CruisePoint.png" alt="CruisePoint Indonesia" loading="lazy" />
+              <img src="/assets/CruisePoint.png" alt="CruisePoint Indonesia" loading="lazy" />
               <div className={styles.relatedProjectContent}>
                 <h3>CruisePoint Indonesia</h3>
                 <p>Professional travel agency landing page</p>

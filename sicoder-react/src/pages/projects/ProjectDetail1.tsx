@@ -302,10 +302,10 @@ export default function ProjectDetail1() {
 
               <div className={styles.galleryGrid}>
                 {[
-                  { src: '/public/assets/img-showcase-login/login-page-basic-purple.png', alt: 'Login Design 1', title: 'Modern Purple Theme',  caption: 'Clean design with gradient effects' },
-                  { src: '/public/assets/img-showcase-login/login-page-blackcat.png',     alt: 'Login Design 2', title: 'Dark Cat Theme',        caption: 'Minimalist dark mode design' },
-                  { src: '/public/assets/img-showcase-login/login-page-panorama.png',     alt: 'Login Design 3', title: 'Panorama Background',   caption: 'Full-screen background image' },
-                  { src: '/public/assets/img-showcase-login/review-bg-astronaut.png',     alt: 'Login Design 4', title: 'Astronaut Theme',       caption: 'Space-themed creative design' },
+                  { src: '/assets/img-showcase-login/login-page-basic-purple.png', alt: 'Login Design 1', title: 'Modern Purple Theme',  caption: 'Clean design with gradient effects' },
+                  { src: '/assets/img-showcase-login/login-page-blackcat.png',     alt: 'Login Design 2', title: 'Dark Cat Theme',        caption: 'Minimalist dark mode design' },
+                  { src: '/assets/img-showcase-login/login-page-panorama.png',     alt: 'Login Design 3', title: 'Panorama Background',   caption: 'Full-screen background image' },
+                  { src: '/assets/img-showcase-login/review-bg-astronaut.png',     alt: 'Login Design 4', title: 'Astronaut Theme',       caption: 'Space-themed creative design' },
                 ].map((g) => (
                   <div key={g.alt} className={styles.galleryItem}>
                     <img src={g.src} alt={g.alt} loading="lazy" />
@@ -434,7 +434,7 @@ export default function ProjectDetail1() {
               ref={related1.ref as React.RefObject<HTMLAnchorElement>}
               className={`${styles.relatedProject} ${related1.animated ? styles.animated : ''}`}
             >
-              <img src="/assets/img/CVDigital.png" alt="Digital CV" loading="lazy" />
+              <img src="/assets/CVDigital.png" alt="Digital CV" loading="lazy" />
               <div className={styles.relatedProjectContent}>
                 <h3>Digital CV</h3>
                 <p>Modern personal branding portfolio</p>
@@ -446,7 +446,7 @@ export default function ProjectDetail1() {
               ref={related2.ref as React.RefObject<HTMLAnchorElement>}
               className={`${styles.relatedProject} ${related2.animated ? styles.animated : ''}`}
             >
-              <img src="/assets/img/CruisePoint.png" alt="CruisePoint" loading="lazy" />
+              <img src="/assets/CruisePoint.png" alt="CruisePoint" loading="lazy" />
               <div className={styles.relatedProjectContent}>
                 <h3>CruisePoint</h3>
                 <p>Travel agency landing page</p>
