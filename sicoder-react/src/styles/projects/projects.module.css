@@ -334,6 +334,10 @@
 }
 
 /* ── Sort Dropdown ──────────────────────────────────── */
+.heroText .subtitle {
+  text-transform: uppercase;
+}
+
 .sortDropdown {
   position: relative;
 }
