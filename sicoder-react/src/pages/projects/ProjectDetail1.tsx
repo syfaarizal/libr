@@ -171,7 +171,7 @@ export default function ProjectDetail1() {
 
       {/* Header */}
       <header className="header header-dark">
-        <a href="/" className="logo">SICO<span>DER</span> .</a>
+        <a href="/" className="logo">LIBR</a>
       </header>
 
       {/* ── Hero ── */}

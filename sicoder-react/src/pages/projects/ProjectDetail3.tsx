@@ -159,7 +159,7 @@ export default function ProjectDetail3() {
 
       {/* Header */}
       <header className="header header-dark">
-        <a href="/" className="logo">SICO<span>DER</span> .</a>
+        <a href="/" className="logo">LIBR</a>
       </header>
 
       <section className={`${styles.projectDetailHero} section-card`}>
