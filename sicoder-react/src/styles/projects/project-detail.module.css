@@ -826,6 +826,20 @@
 }
 
 /* ── Responsive ─────────────────────────────────────── */
+:global(.header.header-dark) {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+
+:global(.header.header-dark.scrolled) {
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+
 @media (max-width: 992px) {
   .projectContentSection { grid-template-columns: 1fr; }
   .challengeSolution      { grid-template-columns: 1fr; }
