@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+const BRAND_LETTERS = ['L', 'I', 'B', 'R'];
+const MIN_LOADING_TIME = 2400;
+const EXIT_DURATION = 1100;
+
 export default function LoadingScreen() {
   const [loaded, setLoaded] = useState(false);
   const [removed, setRemoved] = useState(false);
@@ -8,47 +12,78 @@ export default function LoadingScreen() {
   const [lineExpanded, setLineExpanded] = useState(false);
 
   useEffect(() => {
-    ['L', 'I', 'B', 'R'].forEach((_, i) => {
-      setTimeout(() => {
-        setLettersVisible(prev => {
+    const timers: number[] = [];
+    const startedAt = performance.now();
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.classList.remove('loaded');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    BRAND_LETTERS.forEach((_, index) => {
+      const timer = window.setTimeout(() => {
+        setLettersVisible((prev) => {
           const next = [...prev];
-          next[i] = true;
+          next[index] = true;
           return next;
         });
-      }, 300 + i * 130);
+      }, 240 + index * 150);
+
+      timers.push(timer);
     });
 
-    setTimeout(() => setLineExpanded(true), 900);
+    timers.push(window.setTimeout(() => setLineExpanded(true), 920));
 
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(progressInterval);
-          return 100;
-        }
-        const increment = prev < 70 ? Math.random() * 8 + 4 : Math.random() * 3 + 1;
-        return Math.min(prev + increment, 100);
+    const progressInterval = window.setInterval(() => {
+      const elapsed = performance.now() - startedAt;
+      const normalized = Math.min(elapsed / MIN_LOADING_TIME, 1);
+      const eased = 1 - Math.pow(1 - normalized, 2.4);
+      const target = Math.min(96, eased * 96);
+
+      setProgress((prev) => {
+        if (prev >= target) return prev;
+        return Math.min(target, prev + (prev < 65 ? 4.2 : 2.1));
       });
-    }, 80);
+    }, 90);
 
     const finishLoading = () => {
       setProgress(100);
-      setTimeout(() => {
-        setLoaded(true);
-        document.body.classList.add('loaded');
-        setTimeout(() => setRemoved(true), 800);
-      }, 300);
+
+      timers.push(
+        window.setTimeout(() => {
+          setLoaded(true);
+          document.body.classList.add('loaded');
+
+          timers.push(
+            window.setTimeout(() => {
+              setRemoved(true);
+              document.body.style.overflow = previousBodyOverflow;
+              document.documentElement.style.overflow = previousHtmlOverflow;
+            }, EXIT_DURATION)
+          );
+        }, 260)
+      );
     };
 
-    const timer = setTimeout(finishLoading, 1800);
+    const completeWhenReady = () => {
+      const elapsed = performance.now() - startedAt;
+      const remaining = Math.max(MIN_LOADING_TIME - elapsed, 0);
+      timers.push(window.setTimeout(finishLoading, remaining));
+    };
+
     if (document.readyState === 'complete') {
-      clearTimeout(timer);
-      setTimeout(finishLoading, 600);
+      completeWhenReady();
+    } else {
+      window.addEventListener('load', completeWhenReady, { once: true });
     }
 
     return () => {
-      clearTimeout(timer);
-      clearInterval(progressInterval);
+      timers.forEach((timer) => window.clearTimeout(timer));
+      window.clearInterval(progressInterval);
+      window.removeEventListener('load', completeWhenReady);
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
     };
   }, []);
 
@@ -57,128 +92,155 @@ export default function LoadingScreen() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
 
         .ls-root {
           position: fixed;
           inset: 0;
           z-index: 9999;
-          background: #0a0a0a;
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          transition: clip-path 0.8s cubic-bezier(0.76, 0, 0.24, 1);
-          clip-path: inset(0 0 0 0);
+          background:
+            radial-gradient(circle at 50% 38%, rgba(220, 30, 30, 0.18) 0%, rgba(220, 30, 30, 0.06) 28%, transparent 56%),
+            linear-gradient(180deg, #090909 0%, #111111 55%, #050505 100%);
+          opacity: 1;
+          visibility: visible;
+          transform: scale(1);
+          filter: blur(0);
+          transition:
+            opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0s linear 0.95s;
         }
 
         .ls-root.loaded {
-          clip-path: inset(0 0 100% 0);
-        }
-
-        /* Grain texture */
-        .ls-grain {
-          position: absolute;
-          inset: -50%;
-          width: 200%;
-          height: 200%;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
-          opacity: 0.4;
+          opacity: 0;
+          visibility: hidden;
+          transform: scale(1.03);
+          filter: blur(12px);
           pointer-events: none;
-          animation: grain-shift 0.8s steps(2) infinite;
         }
 
-        @keyframes grain-shift {
-          0%   { transform: translate(0, 0); }
-          25%  { transform: translate(-2%, -3%); }
-          50%  { transform: translate(3%, 1%); }
-          75%  { transform: translate(-1%, 3%); }
-          100% { transform: translate(2%, -1%); }
-        }
-
-        /* Red accent blob */
-        .ls-blob {
+        .ls-root::before {
+          content: '';
           position: absolute;
-          width: 520px;
-          height: 520px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 40% 40%, rgba(220, 30, 30, 0.18) 0%, rgba(180, 0, 0, 0.06) 50%, transparent 70%);
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          inset: 0;
+          background:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+          background-size: 64px 64px;
+          mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95), transparent 82%);
+          opacity: 0.3;
           pointer-events: none;
-          animation: blob-breathe 4s ease-in-out infinite;
         }
 
-        @keyframes blob-breathe {
-          0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-          50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+        .ls-orb {
+          position: absolute;
+          width: min(52vw, 540px);
+          aspect-ratio: 1;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(255, 84, 84, 0.22) 0%, rgba(180, 0, 0, 0.1) 42%, transparent 72%);
+          filter: blur(10px);
+          animation: ls-orbFloat 7s ease-in-out infinite;
+          pointer-events: none;
         }
 
-        /* Vertical side lines */
+        .ls-orb--left {
+          top: 14%;
+          left: -8%;
+        }
+
+        .ls-orb--right {
+          right: -10%;
+          bottom: 10%;
+          animation-delay: -3s;
+        }
+
+        @keyframes ls-orbFloat {
+          0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.72; }
+          50% { transform: translate3d(0, 18px, 0) scale(1.04); opacity: 1; }
+        }
+
+        .ls-frame {
+          position: absolute;
+          inset: 26px;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 22px;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+          pointer-events: none;
+        }
+
         .ls-vline {
           position: absolute;
-          top: 0;
+          top: 14%;
+          bottom: 14%;
           width: 1px;
-          height: 0;
-          background: linear-gradient(to bottom, transparent, rgba(220,30,30,0.5) 40%, rgba(220,30,30,0.5) 60%, transparent);
-          animation: vline-grow 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
-        }
-        .ls-vline--left  { left: 60px; }
-        .ls-vline--right { right: 60px; }
-
-        @keyframes vline-grow {
-          from { height: 0; opacity: 0; }
-          to   { height: 100%; opacity: 1; }
+          background: linear-gradient(to bottom, transparent, rgba(220, 30, 30, 0.34) 20%, rgba(255, 255, 255, 0.12) 50%, rgba(220, 30, 30, 0.34) 80%, transparent);
+          opacity: 0;
+          transform: scaleY(0.65);
+          animation: ls-vlineIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
         }
 
-        /* Main content */
+        .ls-vline--left { left: 64px; }
+        .ls-vline--right { right: 64px; }
+
+        @keyframes ls-vlineIn {
+          to {
+            opacity: 1;
+            transform: scaleY(1);
+          }
+        }
+
         .ls-content {
           position: relative;
           z-index: 1;
+          width: min(92vw, 540px);
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 40px;
+          gap: 30px;
+          text-align: center;
         }
 
-        /* Wordmark */
         .ls-wordmark {
           display: flex;
           align-items: flex-end;
-          gap: 0;
           line-height: 1;
         }
 
         .ls-letter {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(80px, 14vw, 130px);
+          font-size: clamp(84px, 14vw, 132px);
+          letter-spacing: 0.09em;
           color: #ffffff;
-          letter-spacing: 0.08em;
           opacity: 0;
-          transform: translateY(30px) skewX(-4deg);
-          transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                      transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+          transform: translateY(24px);
+          transition:
+            opacity 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .ls-letter.visible {
           opacity: 1;
-          transform: translateY(0) skewX(0deg);
+          transform: translateY(0);
         }
 
-        /* Accent dot */
         .ls-dot {
           width: 10px;
           height: 10px;
-          border-radius: 50%;
-          background: #dc1e1e;
+          margin-left: 6px;
           margin-bottom: 18px;
-          margin-left: 4px;
-          flex-shrink: 0;
+          border-radius: 999px;
+          background: linear-gradient(180deg, #ff6d6d 0%, #d91c1c 100%);
+          box-shadow: 0 0 18px rgba(220, 30, 30, 0.45);
           opacity: 0;
-          transform: scale(0);
-          transition: opacity 0.3s ease 0.85s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.85s;
+          transform: scale(0.4);
+          transition:
+            opacity 0.38s ease 0.1s,
+            transform 0.48s cubic-bezier(0.22, 1.2, 0.36, 1) 0.1s;
         }
 
         .ls-dot.visible {
@@ -186,188 +248,183 @@ export default function LoadingScreen() {
           transform: scale(1);
         }
 
-        /* Divider line */
         .ls-divider {
+          width: min(72vw, 340px);
           display: flex;
           align-items: center;
-          gap: 12px;
-          width: 340px;
+          gap: 14px;
         }
 
         .ls-divider-line {
           flex: 1;
           height: 1px;
-          background: rgba(255,255,255,0.12);
-          transform-origin: left;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+          opacity: 0.8;
           transform: scaleX(0);
-          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
+        .ls-divider-line:first-child { transform-origin: right; }
+        .ls-divider-line:last-child { transform-origin: left; }
 
         .ls-divider-line.expanded {
           transform: scaleX(1);
         }
 
-        .ls-divider-line:last-child {
-          transform-origin: right;
-        }
-
         .ls-divider-diamond {
-          width: 6px;
-          height: 6px;
-          background: #dc1e1e;
-          transform: rotate(45deg) scale(0);
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+          width: 7px;
+          height: 7px;
           flex-shrink: 0;
+          background: #dc1e1e;
+          transform: rotate(45deg) scale(0.45);
+          opacity: 0;
+          transition:
+            transform 0.5s cubic-bezier(0.22, 1.2, 0.36, 1) 0.18s,
+            opacity 0.3s ease 0.18s;
         }
 
         .ls-divider-diamond.expanded {
+          opacity: 1;
           transform: rotate(45deg) scale(1);
         }
 
-        /* Tagline */
-        .ls-tagline {
+        .ls-subtitle {
           font-family: 'DM Sans', sans-serif;
-          font-weight: 300;
-          font-size: 10px;
-          letter-spacing: 0.5em;
-          color: rgba(255,255,255,0.35);
+          font-size: 11px;
+          font-weight: 400;
+          letter-spacing: 0.42em;
           text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.42);
           opacity: 0;
-          animation: fade-up 0.6s ease 1s forwards;
+          transform: translateY(10px);
+          animation: ls-fadeUp 0.7s ease 0.95s forwards;
         }
 
-        @keyframes fade-up {
-          from { opacity: 0; transform: translateY(8px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Progress */
-        .ls-progress-wrap {
+        .ls-progressWrap {
+          width: min(72vw, 280px);
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 10px;
-          width: 260px;
+          gap: 12px;
         }
 
-        .ls-progress-header {
-          width: 100%;
+        .ls-progressHeader {
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          opacity: 0;
+          transform: translateY(8px);
+          animation: ls-fadeUp 0.65s ease 0.75s forwards;
         }
 
-        .ls-progress-label {
+        .ls-progressLabel,
+        .ls-progressHint {
           font-family: 'DM Sans', sans-serif;
-          font-size: 9px;
-          letter-spacing: 0.4em;
-          color: rgba(255,255,255,0.2);
+          font-size: 10px;
+          font-weight: 400;
+          letter-spacing: 0.22em;
           text-transform: uppercase;
-          opacity: 0;
-          animation: fade-up 0.5s ease 0.7s forwards;
+          color: rgba(255, 255, 255, 0.3);
         }
 
-        .ls-progress-pct {
+        .ls-progressValue {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 14px;
-          letter-spacing: 0.1em;
-          color: #dc1e1e;
-          opacity: 0;
-          animation: fade-up 0.5s ease 0.7s forwards;
+          font-size: 16px;
+          letter-spacing: 0.12em;
+          color: #f24b4b;
         }
 
-        .ls-progress-track {
-          width: 100%;
-          height: 1px;
-          background: rgba(255,255,255,0.08);
+        .ls-progressTrack {
           position: relative;
-          overflow: visible;
-        }
-
-        .ls-progress-fill {
-          position: absolute;
-          left: 0; top: 0;
-          height: 100%;
-          background: linear-gradient(90deg, #8b0000, #dc1e1e, #ff4444);
-          transition: width 0.15s ease-out;
-        }
-
-        .ls-progress-fill::after {
-          content: '';
-          position: absolute;
-          right: -1px;
-          top: -3px;
-          width: 2px;
-          height: 7px;
-          background: #ff6666;
-          box-shadow: 0 0 8px 2px rgba(220, 30, 30, 0.8);
-        }
-
-        /* Scanning line */
-        .ls-scan {
-          position: absolute;
-          left: 0;
           width: 100%;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(220,30,30,0.15), rgba(220,30,30,0.4), rgba(220,30,30,0.15), transparent);
-          animation: scan 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-          pointer-events: none;
+          height: 4px;
+          overflow: hidden;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
         }
 
-        @keyframes scan {
-          0%   { top: -2px; opacity: 0; }
-          5%   { opacity: 1; }
-          95%  { opacity: 0.6; }
-          100% { top: 100%; opacity: 0; }
-        }
-
-        /* Corner brackets */
-        .ls-bracket {
+        .ls-progressFill {
           position: absolute;
-          width: 28px;
-          height: 28px;
-          border-color: rgba(220, 30, 30, 0.4);
-          border-style: solid;
-          opacity: 0;
-          animation: bracket-in 0.5s ease forwards;
+          inset: 0 auto 0 0;
+          border-radius: inherit;
+          background: linear-gradient(90deg, #7a1010 0%, #dc1e1e 55%, #ff6f6f 100%);
+          transition: width 0.22s ease-out;
         }
 
-        .ls-bracket--tl { top: 24px; left: 24px; border-width: 1px 0 0 1px; animation-delay: 0.1s; }
-        .ls-bracket--tr { top: 24px; right: 24px; border-width: 1px 1px 0 0; animation-delay: 0.2s; }
-        .ls-bracket--bl { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; animation-delay: 0.3s; }
-        .ls-bracket--br { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; animation-delay: 0.4s; }
+        .ls-progressGlow {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: -24px;
+          width: 42px;
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+          filter: blur(8px);
+          opacity: 0.8;
+        }
 
-        @keyframes bracket-in {
-          from { opacity: 0; transform: scale(0.7); }
-          to   { opacity: 1; transform: scale(1); }
+        .ls-footnote {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12px;
+          font-weight: 300;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.48);
+          opacity: 0;
+          transform: translateY(10px);
+          animation: ls-fadeUp 0.7s ease 1.05s forwards;
+        }
+
+        @keyframes ls-fadeUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @media (max-width: 640px) {
+          .ls-frame {
+            inset: 14px;
+            border-radius: 18px;
+          }
+
+          .ls-vline--left { left: 24px; }
+          .ls-vline--right { right: 24px; }
+
+          .ls-content {
+            gap: 24px;
+          }
+
+          .ls-subtitle {
+            font-size: 10px;
+            letter-spacing: 0.34em;
+          }
+
+          .ls-progressLabel,
+          .ls-progressHint,
+          .ls-footnote {
+            letter-spacing: 0.14em;
+          }
         }
       `}</style>
 
-      <div className={`ls-root${loaded ? ' loaded' : ''}`}>
-        <div className="ls-grain" />
-        <div className="ls-blob" />
-        <div className="ls-scan" />
+      <div className={`ls-root${loaded ? ' loaded' : ''}`} aria-hidden={loaded}>
+        <div className="ls-orb ls-orb--left" />
+        <div className="ls-orb ls-orb--right" />
+        <div className="ls-frame" />
         <div className="ls-vline ls-vline--left" />
         <div className="ls-vline ls-vline--right" />
 
-        <div className="ls-bracket ls-bracket--tl" />
-        <div className="ls-bracket ls-bracket--tr" />
-        <div className="ls-bracket ls-bracket--bl" />
-        <div className="ls-bracket ls-bracket--br" />
-
         <div className="ls-content">
-          <div>
-            <div className="ls-wordmark">
-              {['L', 'I', 'B', 'R'].map((letter, i) => (
-                <span
-                  key={i}
-                  className={`ls-letter${lettersVisible[i] ? ' visible' : ''}`}
-                >
-                  {letter}
-                </span>
-              ))}
-              <div className={`ls-dot${lettersVisible[3] ? ' visible' : ''}`} />
-            </div>
+          <div className="ls-wordmark">
+            {BRAND_LETTERS.map((letter, index) => (
+              <span
+                key={letter}
+                className={`ls-letter${lettersVisible[index] ? ' visible' : ''}`}
+              >
+                {letter}
+              </span>
+            ))}
+            <div className={`ls-dot${lettersVisible[3] ? ' visible' : ''}`} />
           </div>
 
           <div className="ls-divider">
@@ -376,15 +433,27 @@ export default function LoadingScreen() {
             <div className={`ls-divider-line${lineExpanded ? ' expanded' : ''}`} />
           </div>
 
-          <div className="ls-progress-wrap">
-            <div className="ls-progress-header">
-              <span className="ls-progress-label">Loading</span>
-              <span className="ls-progress-pct">{Math.round(progress)}</span>
+          <div className="ls-subtitle">Creative Frontend Portfolio</div>
+
+          <div className="ls-progressWrap">
+            <div className="ls-progressHeader">
+              <span className="ls-progressLabel">Preparing Experience</span>
+              <span className="ls-progressValue">{Math.round(progress)}%</span>
             </div>
-            <div className="ls-progress-track">
-              <div className="ls-progress-fill" style={{ width: `${progress}%` }} />
+
+            <div className="ls-progressTrack">
+              <div className="ls-progressFill" style={{ width: `${progress}%` }}>
+                <div className="ls-progressGlow" />
+              </div>
+            </div>
+
+            <div className="ls-progressHeader">
+              <span className="ls-progressHint">Smooth entry, refined motion</span>
+              <span className="ls-progressHint">Please wait</span>
             </div>
           </div>
+
+          <div className="ls-footnote">Loading the portfolio with a calmer reveal.</div>
         </div>
       </div>
     </>
