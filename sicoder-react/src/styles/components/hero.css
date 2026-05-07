@@ -236,7 +236,7 @@ body {
 .home {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-xl);
+  /* gap: var(--spacing-xl); */
   align-items: center;
   width: 100%;
   max-width: 1400px;
@@ -277,8 +277,8 @@ body {
   align-items: center;
   justify-content: center;
 }
-.geo-ring-1 { width: 340px; height: 340px; animation: rotateCW  18s linear infinite; }
-.geo-ring-2 { width: 280px; height: 280px; animation: rotateCCW 12s linear infinite; }
+.geo-ring-1 { width: 530px; height: 530px; animation: rotateCW  18s linear infinite; }
+.geo-ring-2 { width: 400px; height: 400px; animation: rotateCCW 12s linear infinite; }
 .geo-ring-3 { width: 320px; height: 320px; animation: rotateCW  24s linear infinite; }
 .geo-ring svg { width: 100%; height: 100%; }
 
@@ -288,8 +288,8 @@ body {
 /* ── BUBBLE SPHERE — transparent with inward red glow ── */
 .logo-sphere {
   position: relative;
-  width: 230px;
-  height: 230px;
+  width: 370px;
+  height: 370px;
   border-radius: 50%;
   z-index: 5;
 
@@ -303,10 +303,10 @@ body {
 
   /* inward red glow = multiple inset shadows */
   box-shadow:
-    inset 0  0  30px  6px  rgba(200, 20, 20, 0.45),
+    inset 0  0  30px  6px  rgba(200, 20, 20, 0.26),
     inset 0  0  70px  20px rgba(160, 10, 10, 0.25),
     inset 0  0  120px 40px rgba(100,  5,  5, 0.12),
-    0    0   40px 10px rgba(200, 20, 20, 0.25),   /* outer soft glow */
+    0    0   40px 10px rgba(200, 20, 20, 0.164),   /* outer soft glow */
     0    0   90px 20px rgba(160, 10, 10, 0.12);
 
   /* glass-like border ring */
@@ -338,13 +338,13 @@ body {
 }
 
 .logo-3d {
-  width: 130px;
-  height: 130px;
+  width: 330px;
+  height: 330px;
   object-fit: contain;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 0 22px rgba(220, 30, 30, 0.75))
-          drop-shadow(0 0  8px rgba(255, 80, 80, 0.4));
+  /* filter: drop-shadow(0 0 22px rgba(220, 30, 30, 0.75))
+          drop-shadow(0 0  8px rgba(255, 80, 80, 0.4)); */
 }
 
 .glow-effect {
@@ -367,7 +367,7 @@ body {
 .home-content {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 2rem;
   animation: fadeInUp 0.9s ease both 0.3s;
 }
 @keyframes fadeInUp {
@@ -380,7 +380,7 @@ body {
 /* "Hello, I'm" */
 .subtitle {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   color: var(--text-secondary);
   letter-spacing: 0.35em;
   text-transform: uppercase;
@@ -391,7 +391,7 @@ body {
 
 /* "Syifa Fauziyah Arizal" — large */
 .title {
-  font-size: clamp(2.8rem, 4.8vw, 4.2rem);
+  font-size: clamp(2.5rem, 6vw, 6rem);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -406,7 +406,7 @@ body {
   animation: fadeInUp 0.7s ease both 0.6s;
 }
 .typing-text {
-  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-size: clamp(1.6rem, 2.9vw, 2.3rem);
   font-weight: 600;
   color: var(--text-secondary);
 }
@@ -428,7 +428,7 @@ body {
 
 /* description */
 .description {
-  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-size: clamp(1.4rem, 1.7vw, 1.6rem);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.58);
   border-left: 2px solid rgba(224, 32, 32, 0.5);
@@ -453,7 +453,7 @@ body {
   border: 1.5px solid var(--border-color);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
-  font-size: 1.15rem;
+  font-size: 2rem;
   text-decoration: none;
   transition: all var(--transition-base);
   overflow: hidden;
@@ -489,7 +489,7 @@ body {
   gap: 0.7rem;
   padding: 1rem 2.4rem;
   font-family: var(--font-head);
-  font-size: 1rem;
+  font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   border-radius: var(--radius-full);
@@ -582,7 +582,7 @@ body {
   border-radius: 16px;
   overflow: hidden;
   /* push it up — leaves gap for scroll-down */
-  margin-bottom: 5.5rem;
+  margin-top: 6.6rem;
   position: relative;
   z-index: 5;
   animation: fadeInUp 0.8s ease both 1s;
