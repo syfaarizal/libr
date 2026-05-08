@@ -116,7 +116,7 @@ export default function HeroSection() {
         </div>
 
         {/* ── side labels – absolute inside hero, scroll away naturally ── */}
-        <div className="hero-side-dots"><span /><span /><span /></div>
+        <div className="hero-side-dots"><span /><span /><span /><span /></div>
         <div className="hero-side-label hero-side-label--left">Front-End Developer</div>
         <div className="hero-side-num">01</div>
         <div className="hero-side-label hero-side-label--right">Building · Learning · Growing</div>
