@@ -498,7 +498,7 @@ body {
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all var(--transition-base);
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -524,7 +524,7 @@ body {
 .btn-secondary {
   background: transparent;
   color: var(--text-color);
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: var(--primary-bright);
 }
 .btn-secondary:hover {
   border-color: var(--text-color);
