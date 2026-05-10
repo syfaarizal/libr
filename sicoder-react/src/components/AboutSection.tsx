@@ -79,9 +79,13 @@ export default function AboutSection() {
       {/* ── left accent bar ── */}
       <div className="about-side-bar" aria-hidden="true">
         <span className="about-side-dot" />
+        <span className="about-side-dot" />
+        <span className="about-side-dot" />
         <span className="about-side-line" />
         <span className="about-side-text">About Me</span>
         <span className="about-side-line" />
+        <span className="about-side-dot" />
+        <span className="about-side-dot" />
         <span className="about-side-dot" />
       </div>
 

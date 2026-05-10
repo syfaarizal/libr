@@ -111,18 +111,18 @@
 /* ── left accent bar ── */
 .about-side-bar {
   position: absolute;
-  left: 1.8rem;
+  left: 3rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   z-index: 5;
 }
 .about-side-dot {
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--primary-color);
   box-shadow: 0 0 10px rgba(224, 32, 32, 0.75), 0 0 20px rgba(224, 32, 32, 0.35);
@@ -134,19 +134,20 @@
   to   { opacity: 1;   transform: scale(1.25); }
 }
 .about-side-line {
-  width: 1.5px;
-  height: 42px;
-  background: linear-gradient(to bottom, transparent, rgba(224, 32, 32, 0.55), transparent);
+  width: 0.5px;
+  height: 130px;
+  background: rgba(224, 32, 32, 0.55);
   display: block;
 }
 .about-side-text {
   writing-mode: vertical-rl;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 1.2rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--text-secondary);
   padding: 0.4rem 0;
+  transform: rotate(180deg);
 }
 
 /* ── bottom ambient glow ── */
@@ -206,14 +207,14 @@
 }
 .about-section-badge span {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
   letter-spacing: 0.06em;
 }
 
 .about-title {
   font-family: var(--font-head);
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-size: clamp(2.7rem, 4vw, 3.4rem);
   font-weight: 900;
   letter-spacing: -0.01em;
   color: var(--text-color);
@@ -252,7 +253,7 @@
 }
 
 .about-subtitle {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
   letter-spacing: 0.025em;
 }
@@ -285,7 +286,7 @@
 /* name block */
 .about-name {
   font-family: var(--font-head);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-size: clamp(2rem, 3vw, 2.6rem);
   font-weight: 900;
   line-height: 1.15;
   color: var(--text-color);
@@ -294,7 +295,7 @@
 .about-name-red {
   color: var(--primary-color);
   display: block;
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-size: clamp(2.2rem, 3.2vw, 2.8rem);
   text-shadow: 0 0 40px rgba(224, 32, 32, 0.35);
 }
 
@@ -328,7 +329,7 @@
 
 /* lead */
 .about-lead {
-  font-size: clamp(1rem, 1.6vw, 1.18rem);
+  font-size: clamp(2rem, 1.6vw, 1.18rem);
   line-height: 1.78;
   color: var(--text-color);
   font-weight: 500;
@@ -341,7 +342,7 @@
   gap: 0.9rem;
 }
 .about-details p {
-  font-size: clamp(0.88rem, 1.3vw, 1rem);
+  font-size: clamp(1.5rem, 1.3vw, 1rem);
   line-height: 1.82;
   color: var(--text-secondary);
 }
@@ -409,7 +410,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 1.25rem;
+  font-size: 2rem;
   box-shadow: 0 4px 16px rgba(200, 16, 16, 0.5);
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
@@ -422,7 +423,7 @@
 
 .stat-number {
   font-family: var(--font-head);
-  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  font-size: clamp(1.8rem, 2.5vw, 2rem);
   font-weight: 900;
   color: var(--primary-color);
   text-shadow: 0 0 20px rgba(224, 32, 32, 0.5);
@@ -431,7 +432,7 @@
 }
 
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.4;
   margin: 0;
@@ -534,46 +535,6 @@
     transparent 60%
   );
   pointer-events: none;
-}
-
-/* neon arc top */
-.avatar-neon-arc {
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 62%;
-  height: 62px;
-  border-top: 3px solid rgba(255, 60, 60, 0.85);
-  border-radius: 50% 50% 0 0 / 30px 30px 0 0;
-  filter: blur(4px);
-  box-shadow: 0 -10px 28px rgba(255, 60, 60, 0.6);
-  pointer-events: none;
-  animation: arcFlicker 4.5s ease-in-out infinite;
-}
-@keyframes arcFlicker {
-  0%, 100% { opacity: 0.8; filter: blur(4px); }
-  35%       { opacity: 1;   filter: blur(2.5px); box-shadow: 0 -12px 36px rgba(255,60,60,0.75); }
-  65%       { opacity: 0.6; filter: blur(6px); }
-}
-
-/* scanline sweep */
-.avatar-scanline {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(255, 80, 80, 0.55), transparent);
-  filter: blur(1px);
-  border-radius: 50%;
-  animation: scanSweep 6s linear infinite;
-  pointer-events: none;
-  z-index: 3;
-}
-@keyframes scanSweep {
-  0%   { top: 0%;   opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
 }
 
 /* sparks */
