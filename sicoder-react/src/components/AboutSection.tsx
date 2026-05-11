@@ -71,11 +71,6 @@ export default function AboutSection() {
         {Array.from({ length: 48 }).map((_, i) => <span key={i} />)}
       </div>
 
-      {/* ── feather watermark ── */}
-      <div className="about-watermark" aria-hidden="true">
-        <i className="fas fa-feather-alt" />
-      </div>
-
       {/* ── left accent bar ── */}
       <div className="about-side-bar" aria-hidden="true">
         <span className="about-side-dot" />
