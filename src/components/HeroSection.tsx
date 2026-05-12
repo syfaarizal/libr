@@ -360,7 +360,11 @@ export default function HeroSection() {
             </div>
             <div className="stat-info">
               <span className="stat-label">{s.label}</span>
-              <span className="stat-value">{s.value}</span>
+              <span className="stat-value">
+                <span className="stat-bracket">[</span>
+                {s.value}
+                <span className="stat-bracket">]</span>
+              </span>
               <span className="stat-sub">{s.sub}</span>
             </div>
           </div>

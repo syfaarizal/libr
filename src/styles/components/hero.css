@@ -23,6 +23,9 @@
   --transition-fast: 0.18s ease;
   --transition-base: 0.28s ease;
 
+  --cyber-dot:       rgba(255, 255, 255, 0.032);
+  --cyber-scan:      rgba(0, 0, 0, 0.016);
+
   --spacing-sm:  1.5rem;
   --spacing-md:  2rem;
   --spacing-xl:  4rem;
@@ -55,6 +58,33 @@ body {
   padding: 68px 5% 0;   /* top = header height; bottom handled by stats */
 }
 
+/* dot-grid overlay */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--cyber-dot) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* scanline texture */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    var(--cyber-scan) 3px,
+    var(--cyber-scan) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* background radial glow */
 .hero-bg-overlay {
   position: absolute;
@@ -82,8 +112,9 @@ body {
 .particle {
   position: absolute;
   background: var(--primary-color);
-  border-radius: 50%;
+  border-radius: 0;
   opacity: 0;
+  transform: rotate(45deg);
   animation: floatParticle var(--dur) ease-in-out var(--delay) infinite;
 }
 @keyframes floatParticle {
@@ -111,6 +142,14 @@ body {
   background: var(--primary-color);
   /* border-radius: 50%; */
   display: block;
+}
+.hero-side-dots span:nth-child(1) { animation: dotBlink 2s 0.0s ease-in-out infinite; }
+.hero-side-dots span:nth-child(2) { animation: dotBlink 2s 0.4s ease-in-out infinite; }
+.hero-side-dots span:nth-child(3) { animation: dotBlink 2s 0.8s ease-in-out infinite; }
+.hero-side-dots span:nth-child(4) { animation: dotBlink 2s 1.2s ease-in-out infinite; }
+@keyframes dotBlink {
+  0%, 100% { opacity: 1;   transform: scaleX(1);   }
+  50%       { opacity: 0.2; transform: scaleX(0.6); }
 }
 
 .hero-side-label {
@@ -307,6 +346,12 @@ body {
   display: block;
   animation: fadeInUp 0.7s ease both 0.4s;
 }
+.subtitle::before {
+  content: '// ';
+  color: var(--primary-color);
+  opacity: 0.75;
+  letter-spacing: 0;
+}
 
 /* "Syifa Fauziyah Arizal" — large */
 .title {
@@ -317,7 +362,10 @@ body {
   margin-bottom: 1.4rem;
   animation: fadeInUp 0.7s ease both 0.5s;
 }
-.gradient-text { color: var(--primary-color); }
+.gradient-text {
+  color: var(--primary-color);
+  text-shadow: 0 0 28px rgba(224, 32, 32, 0.35), 0 0 8px rgba(224, 32, 32, 0.2);
+}
 
 /* typing row */
 .typing-container {
@@ -333,6 +381,7 @@ body {
   color: var(--primary-color);
   border-right: 2.5px solid var(--primary-color);
   padding-right: 3px;
+  text-shadow: 0 0 14px rgba(224, 32, 32, 0.45);
   animation: blink 0.75s step-end infinite;
 }
 @keyframes blink { 50% { border-color: transparent; } }
@@ -350,7 +399,8 @@ body {
   font-size: clamp(1.4rem, 1.7vw, 1.6rem);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.58);
-  border-left: 2px solid rgba(224, 32, 32, 0.5);
+  border-left: 2px solid rgba(224, 32, 32, 0.55);
+  box-shadow: -6px 0 18px -4px rgba(224, 32, 32, 0.25);
   padding-left: 1.1rem;
   max-width: 500px;
   animation: fadeInUp 0.7s ease both 0.7s;
@@ -370,6 +420,7 @@ body {
   justify-content: center;
   background: var(--card-color);
   border: 1.5px solid var(--border-color);
+  border-bottom: 1.5px solid rgba(224, 32, 32, 0.6);
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
   font-size: 2rem;
@@ -377,12 +428,13 @@ body {
   text-decoration: none;
   transition: all var(--transition-base);
   overflow: hidden;
+  box-shadow: 0 5px 18px -4px rgba(224, 32, 32, 0.42);
 }
 .social-icon:hover {
   transform: translateY(-5px);
   border-color: var(--primary-color);
   color: var(--primary-color);
-  box-shadow: 0 6px 20px rgba(224, 32, 32, 0.3);
+  box-shadow: 0 8px 24px -2px rgba(224, 32, 32, 0.55), 0 0 0 1px rgba(224, 32, 32, 0.15);
 }
 .hover-effect {
   position: absolute;
@@ -418,7 +470,23 @@ body {
   border: 1px solid transparent;
   text-decoration: none;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
+
+/* scan sweep on hover */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+.btn:hover::after { left: 140%; }
 
 .btn-primary {
   background: var(--gradient-primary);
@@ -499,13 +567,14 @@ body {
   max-width: 1200px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color);
+  border-top: 1px solid rgba(224, 32, 32, 0.28);
   border-radius: 16px;
   overflow: hidden;
-  /* push it up — leaves gap for scroll-down */
   margin-top: 6.6rem;
   position: relative;
   z-index: 5;
   animation: fadeInUp 0.8s ease both 1s;
+  box-shadow: 0 -6px 24px -10px rgba(224, 32, 32, 0.2), inset 0 1px 0 rgba(224, 32, 32, 0.12);
 }
 
 .stat-item {
@@ -519,6 +588,10 @@ body {
 }
 .stat-item:last-child { border-right: none; }
 .stat-item:hover { background: rgba(224, 32, 32, 0.06); }
+.stat-item:hover .stat-icon-wrap {
+  background: rgba(224, 32, 32, 0.2);
+  box-shadow: 0 0 16px rgba(224, 32, 32, 0.35);
+}
 
 .stat-icon-wrap {
   flex-shrink: 0;
@@ -531,6 +604,7 @@ body {
   justify-content: center;
   color: var(--primary-color);
   font-size: 1.7rem;
+  transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .stat-info {
@@ -549,6 +623,14 @@ body {
   font-weight: 900;
   line-height: 1.15;
   color: var(--text-color);
+}
+.stat-bracket {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(224, 32, 32, 0.55);
+  vertical-align: middle;
+  margin: 0 1px;
 }
 .stat-sub {
   font-size: 1.3rem;
