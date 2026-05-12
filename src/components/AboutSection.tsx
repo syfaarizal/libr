@@ -1,8 +1,25 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function AboutSection() {
   const statsRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleAvatarMouseMove = (e: React.MouseEvent) => {
+    if (!avatarRef.current) return;
+    const rect = avatarRef.current.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    setMousePos({
+      x: (e.clientX - cx) / (rect.width / 2),
+      y: (e.clientY - cy) / (rect.height / 2),
+    });
+  };
+
+  const handleAvatarMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+  };
 
   /* ── counter animation ── */
   useEffect(() => {
@@ -152,7 +169,25 @@ export default function AboutSection() {
 
         {/* RIGHT — avatar */}
         <div className="about-visual reveal reveal-right">
-          <div className="avatar-wrapper">
+          <div
+            className="avatar-wrapper"
+            ref={avatarRef}
+            onMouseMove={handleAvatarMouseMove}
+            onMouseLeave={handleAvatarMouseLeave}
+          >
+            {/* cursor-reactive cyber boxes */}
+            <div
+              className="avatar-cyber-box avatar-cyber-box--1"
+              style={{ transform: `translate(${mousePos.x * 14}px, ${mousePos.y * 10}px)` }}
+            />
+            <div
+              className="avatar-cyber-box avatar-cyber-box--2"
+              style={{ transform: `translate(${mousePos.x * -18}px, ${mousePos.y * -14}px)` }}
+            />
+            <div
+              className="avatar-cyber-box avatar-cyber-box--3"
+              style={{ transform: `translate(${mousePos.x * 10}px, ${mousePos.y * -18}px)` }}
+            />
             {/* ambient light behind circle */}
             <div className="avatar-ambient" />
 

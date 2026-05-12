@@ -325,27 +325,55 @@
 }
 
 /* ══════════════════════════════════════════
-   STATS BAR
+   STATS BAR — integrated panel
    ══════════════════════════════════════════ */
 .stats-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0;
+  border: 1px solid rgba(224, 32, 32, 0.2);
+  border-top: 1.5px solid rgba(224, 32, 32, 0.5);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow:
+    0 -4px 20px -8px rgba(224, 32, 32, 0.22),
+    inset 0 1px 0 rgba(224, 32, 32, 0.1);
+  position: relative;
+}
+
+/* periodic scan sweep across whole panel */
+.stats-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -55%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.032), transparent);
+  animation: statsScan 6s ease-in-out infinite 2s;
+  pointer-events: none;
+  z-index: 2;
+}
+@keyframes statsScan {
+  0%   { left: -55%; }
+  100% { left: 160%; }
 }
 
 .stat-card {
-  background: var(--card-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0;
   padding: 1.4rem 1.2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  transition: background var(--transition-base);
   position: relative;
   overflow: hidden;
   cursor: default;
 }
+.stat-card:last-child { border-right: none; }
 
 /* bottom red bar on hover */
 .stat-card::before {
@@ -358,8 +386,9 @@
   transform-origin: left;
   transition: transform 0.38s ease;
   box-shadow: 0 0 12px rgba(224, 32, 32, 0.6);
+  z-index: 3;
 }
-/* shimmer sweep */
+/* shimmer sweep per card */
 .stat-card::after {
   content: '';
   position: absolute;
@@ -368,11 +397,10 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
   transition: left 0.5s ease;
+  z-index: 3;
 }
 .stat-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(224, 32, 32, 0.42);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.45), 0 0 24px rgba(224, 32, 32, 0.14);
+  background: rgba(224, 32, 32, 0.045);
 }
 .stat-card:hover::before { transform: scaleX(1); }
 .stat-card:hover::after  { left: 140%; }
@@ -409,10 +437,18 @@
 }
 
 .stat-label {
-  font-size: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   color: var(--text-secondary);
   line-height: 1.4;
+  letter-spacing: 0.04em;
   margin: 0;
+  text-transform: uppercase;
+}
+.stat-label::before {
+  content: '// ';
+  color: rgba(224, 32, 32, 0.5);
+  letter-spacing: 0;
 }
 
 /* ══════════════════════════════════════════
@@ -536,6 +572,61 @@
 @keyframes sparkFloat {
   0%, 100% { opacity: 0.25; transform: translateY(0) scale(1); }
   50%       { opacity: 1;    transform: translateY(-14px) scale(1.35); }
+}
+
+/* ── CURSOR-REACTIVE CYBER BOXES ── */
+.avatar-cyber-box {
+  position: absolute;
+  pointer-events: none;
+  transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 8;
+}
+
+/* wireframe face */
+.avatar-cyber-box::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(224, 32, 32, 0.52);
+  box-shadow:
+    0 0 10px rgba(224, 32, 32, 0.18),
+    inset 0 0 6px rgba(224, 32, 32, 0.06);
+}
+
+/* outer ghost ring */
+.avatar-cyber-box::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(224, 32, 32, 0.12);
+}
+
+/* corner ticks — using box corner shadows */
+.avatar-cyber-box--1 {
+  width: 42px; height: 42px;
+  top: 7%; left: 3%;
+  animation: cyberBoxIdle 4s ease-in-out infinite;
+}
+.avatar-cyber-box--2 {
+  width: 28px; height: 28px;
+  bottom: 12%; right: 4%;
+  animation: cyberBoxIdle 5.2s ease-in-out infinite 0.9s;
+}
+.avatar-cyber-box--3 {
+  width: 18px; height: 18px;
+  top: 24%; right: 7%;
+  animation: cyberBoxIdle 3.6s ease-in-out infinite 1.6s;
+}
+
+/* dot/label on box 1 */
+.avatar-cyber-box--1::before {
+  border-color: rgba(224, 32, 32, 0.6);
+}
+
+@keyframes cyberBoxIdle {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1; }
 }
 
 /* ══════════════════════════════════════════
