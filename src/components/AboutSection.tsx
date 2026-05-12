@@ -1,10 +1,27 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function AboutSection() {
-  const statsRef = useRef<HTMLDivElement>(null);
+  const statsRef   = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const avatarRef = useRef<HTMLDivElement>(null);
+  const avatarRef  = useRef<HTMLDivElement>(null);
+  const gridSpotRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  /* ── grid spotlight: direct DOM mutation (no re-render) ── */
+  const handleSectionMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!gridSpotRef.current || !sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width)  * 100;
+    const y = ((e.clientY - rect.top)  / rect.height) * 100;
+    gridSpotRef.current.style.setProperty('--gx', `${x}%`);
+    gridSpotRef.current.style.setProperty('--gy', `${y}%`);
+    gridSpotRef.current.style.opacity = '1';
+  };
+
+  const handleSectionMouseLeave = () => {
+    if (!gridSpotRef.current) return;
+    gridSpotRef.current.style.opacity = '0';
+  };
 
   const handleAvatarMouseMove = (e: React.MouseEvent) => {
     if (!avatarRef.current) return;
@@ -81,7 +98,17 @@ export default function AboutSection() {
   }
 
   return (
-    <section id="about" className="about-section" ref={sectionRef}>
+    <section
+      id="about"
+      className="about-section"
+      ref={sectionRef}
+      onMouseMove={handleSectionMouseMove}
+      onMouseLeave={handleSectionMouseLeave}
+    >
+
+      {/* ── grid background ── */}
+      <div className="about-grid-bg"      aria-hidden="true" />
+      <div className="about-grid-spotlight" ref={gridSpotRef} aria-hidden="true" />
 
       {/* ── decorative grid dots ── */}
       <div className="about-grid-dots" aria-hidden="true">
