@@ -20,7 +20,7 @@ export default function AboutSection() {
 
   const handleSectionMouseLeave = () => {
     if (!gridSpotRef.current) return;
-    gridSpotRef.current.style.opacity = '0';
+    gridSpotRef.current.style.opacity = '0.15';
   };
 
   const handleAvatarMouseMove = (e: React.MouseEvent) => {
