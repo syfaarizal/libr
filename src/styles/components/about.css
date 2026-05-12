@@ -77,12 +77,12 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+    linear-gradient(rgba(223, 9, 9, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 16, 16, 0.18) 1px, transparent 1px);
   background-size: 48px 48px;
   background-position: center;
-  -webkit-mask-image: radial-gradient(circle 260px at var(--gx, 50%) var(--gy, 50%), black 0%, transparent 100%);
-          mask-image: radial-gradient(circle 260px at var(--gx, 50%) var(--gy, 50%), black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 250px at var(--gx, 50%) var(--gy, 50%), black 0%, transparent 100%);
+          mask-image: radial-gradient(circle 250px at var(--gx, 50%) var(--gy, 50%), black 0%, transparent 100%);
   opacity: 0.24;
   transition: opacity 0.55s ease;
   pointer-events: none;
