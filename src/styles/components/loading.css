@@ -1,37 +1,305 @@
-.loading-screen {
-    position: fixed;
-    inset: 0;
-    background: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ─── Root Overlay ─────────────────────────────────────────── */
+
+.ls-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(220, 30, 30, 0.16) 0%, rgba(220, 30, 30, 0.05) 28%, transparent 56%),
+    linear-gradient(180deg, #090909 0%, #111111 55%, #050505 100%);
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  filter: blur(0);
+  transition:
+    opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.95s;
 }
 
-.loading-screen.loaded {
-    opacity: 0;
-    visibility: hidden;
+.ls-root.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  filter: blur(12px);
+  pointer-events: none;
 }
 
-.loading-spinner {
-    text-align: center;
+/* Grid texture */
+.ls-root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9), transparent 80%);
+  opacity: 0.28;
+  pointer-events: none;
 }
 
-.spinner-circle {
-    width: 60px;
-    height: 60px;
-    border: 3px solid transparent;
-    border-top-color: var(--primary-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
+/* ─── Ambient Orbs ─────────────────────────────────────────── */
+
+.ls-orb {
+  position: absolute;
+  width: min(52vw, 540px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 84, 84, 0.18) 0%, rgba(180, 0, 0, 0.08) 42%, transparent 72%);
+  filter: blur(10px);
+  animation: ls-orbFloat 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.spinner-text {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--text-color);
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.ls-orb--left  { top: 14%; left: -8%; }
+.ls-orb--right { right: -10%; bottom: 10%; animation-delay: -3s; }
+
+@keyframes ls-orbFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.7; }
+  50%       { transform: translate3d(0, 18px, 0) scale(1.04); opacity: 1; }
+}
+
+/* ─── Frame & Vertical Lines ───────────────────────────────── */
+
+.ls-frame {
+  position: absolute;
+  inset: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 22px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+  pointer-events: none;
+}
+
+.ls-vline {
+  position: absolute;
+  top: 14%;
+  bottom: 14%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(220, 30, 30, 0.3) 20%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(220, 30, 30, 0.3) 80%,
+    transparent
+  );
+  opacity: 0;
+  transform: scaleY(0.65);
+  animation: ls-vlineIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.ls-vline--left  { left: 64px; }
+.ls-vline--right { right: 64px; }
+
+@keyframes ls-vlineIn {
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─── Content ──────────────────────────────────────────────── */
+
+.ls-content {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 540px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+/* ─── Wordmark ─────────────────────────────────────────────── */
+
+.ls-wordmark {
+  display: flex;
+  align-items: flex-end;
+  line-height: 1;
+}
+
+.ls-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(84px, 14vw, 132px);
+  letter-spacing: 0.09em;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ls-letter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ls-dot {
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff6d6d 0%, #d91c1c 100%);
+  box-shadow: 0 0 16px rgba(220, 30, 30, 0.4);
+  opacity: 0;
+  transform: scale(0.4);
+  transition:
+    opacity 0.38s ease 0.1s,
+    transform 0.48s cubic-bezier(0.22, 1.2, 0.36, 1) 0.1s;
+}
+
+.ls-dot.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Divider ──────────────────────────────────────────────── */
+
+.ls-divider {
+  width: min(72vw, 340px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ls-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+  transform: scaleX(0);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ls-divider-line:first-child { transform-origin: right; }
+.ls-divider-line:last-child  { transform-origin: left; }
+
+.ls-divider-line.expanded { transform: scaleX(1); }
+
+.ls-divider-diamond {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: #dc1e1e;
+  transform: rotate(45deg) scale(0.45);
+  opacity: 0;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1.2, 0.36, 1) 0.18s,
+    opacity 0.3s ease 0.18s;
+}
+
+.ls-divider-diamond.expanded {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+/* ─── Subtitle ─────────────────────────────────────────────── */
+
+.ls-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: ls-fadeUp 0.7s ease 0.95s forwards;
+}
+
+/* ─── Progress ─────────────────────────────────────────────── */
+
+.ls-progressWrap {
+  width: min(72vw, 280px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ls-progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: ls-fadeUp 0.65s ease 0.75s forwards;
+}
+
+.ls-progressLabel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.ls-progressValue {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: #f24b4b;
+}
+
+.ls-progressTrack {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.ls-progressFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7a1010 0%, #dc1e1e 55%, #ff6f6f 100%);
+  transition: width 0.22s ease-out;
+}
+
+.ls-progressGlow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -24px;
+  width: 42px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  filter: blur(8px);
+  opacity: 0.75;
+}
+
+/* ─── Animations ───────────────────────────────────────────── */
+
+@keyframes ls-fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .ls-frame {
+    inset: 14px;
+    border-radius: 18px;
+  }
+
+  .ls-vline--left  { left: 24px; }
+  .ls-vline--right { right: 24px; }
+
+  .ls-content { gap: 24px; }
+
+  .ls-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.34em;
+  }
+
+  .ls-progressLabel { letter-spacing: 0.14em; }
 }
