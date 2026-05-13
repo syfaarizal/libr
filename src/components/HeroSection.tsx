@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
 const texts = [
-  'Building My Own Path',
-  'Front-End Developer in Progress',
-  'Code. Design. Direction.',
+  'Intelligent System Builder',
+  'Front-End Developer',
+  'AI Systems Builder',
+  'Automation Thinker',
+  'Digital Problem Solver',
 ];
 
 const stats = [
@@ -114,11 +116,11 @@ export default function HeroSection() {
         <span />
       </div>
       <div className="hero-side-label hero-side-label--left">
-        Front-End Developer
+        AI Systems Builder
       </div>
       <div className="hero-side-num">01</div>
       <div className="hero-side-label hero-side-label--right">
-        Building - Learning - Growing
+        Automation - Innovation - Impact
       </div>
 
       <div className="home">
@@ -243,8 +245,7 @@ export default function HeroSection() {
           </div>
 
           <p className="description fade-in">
-            I don&apos;t just write code. I turn chaos into clarity, building
-            interfaces, experiences, and ownership over my craft.
+            I build products, systems, and AI experiences that help people turn ideas into reality.
           </p>
 
           <div className="social-icons">
