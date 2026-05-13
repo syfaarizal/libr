@@ -174,21 +174,21 @@ export default function AboutSection() {
               <div className="stat-icon"><i className="fas fa-code" /></div>
               <div className="stat-content">
                 <h3 className="stat-number" data-count="3" data-suffix="+">0+</h3>
-                <p className="stat-label">Projects<br/>Completed</p>
+                <p className="stat-label">Projects Completed</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon"><i className="fas fa-heart" /></div>
               <div className="stat-content">
                 <h3 className="stat-number" data-count="100" data-suffix="%">0%</h3>
-                <p className="stat-label">Client<br/>Satisfaction</p>
+                <p className="stat-label">Client Satisfaction</p>
               </div>
             </div>
             <div className="stat-card">
               <div className="stat-icon"><i className="fas fa-clock" /></div>
               <div className="stat-content">
                 <h3 className="stat-number" data-count="1" data-suffix="+">0+</h3>
-                <p className="stat-label">Years<br/>Learning</p>
+                <p className="stat-label">Years Learning</p>
               </div>
             </div>
           </div>
