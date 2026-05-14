@@ -69,6 +69,11 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" className="skills-section" ref={sectionRef}>
+      <div className="skills-side-rail" aria-hidden="true">
+        <span className="skills-side-line skills-side-line--top" />
+        <div className="skills-side-label">SKILLS</div>
+        <span className="skills-side-line skills-side-line--bottom" />
+      </div>
 
       {/* ── Header ── */}
       <div className="skills-header">
