@@ -67,20 +67,34 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" className="skills-section" ref={sectionRef}>
-
-      {/* Background watermark */}
-      <div className="skills-watermark" aria-hidden="true">02</div>
-
-      {/* Outer layout */}
       <div className="skills-layout">
 
-        {/* ── Left sidebar ── */}
+        {/* ══════════════════════════
+            LEFT SIDEBAR
+            ══════════════════════════
+            Structure (top → bottom):
+              [02 label]
+              [red line]
+              [SKILLS text]
+              [red line]
+        ══════════════════════════ */}
         <aside className="skills-sidebar" aria-hidden="true">
+          {/* Section number */}
+          <span className="sidebar-number">02</span>
+
+          {/* Line above SKILLS */}
           <div className="sidebar-line" />
+
+          {/* Vertical label */}
           <span className="sidebar-label">SKILLS</span>
+
+          {/* Line below SKILLS */}
+          <div className="sidebar-line" />
         </aside>
 
-        {/* ── Main content ── */}
+        {/* ══════════════════════════
+            MAIN CONTENT
+        ══════════════════════════ */}
         <div className="skills-main">
 
           {/* Header */}
@@ -156,8 +170,8 @@ export default function SkillsSection() {
             </p>
           </div>
 
-        </div>
-      </div>
+        </div>{/* /skills-main */}
+      </div>{/* /skills-layout */}
     </section>
   );
 }
