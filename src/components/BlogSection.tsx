@@ -85,64 +85,84 @@ export default function BlogSection() {
   };
 
   return (
-    <section id="blog" className="section-card section-reveal">
-      <div className="section-header">
-        <div className="section-title">
-          <span className="title-number">03</span>
-          <h2>My <span className="highlight">Blog</span></h2>
-        </div>
-        <p className="section-subtitle">My blog in learning, building and growing</p>
-      </div>
+    <section id="blog" className="section-card section-reveal blog-section-shell">
+      <div className="blog-section-grid" aria-hidden="true" />
+      <div className="blog-section-glow" aria-hidden="true" />
 
-      <div className="blog-header">
-        <h3 className="blog-section-title">Challenges <span className="gradient-text">Day-By-Day</span></h3>
-        <div className="decorative-line"></div>
-      </div>
+      <div className="blog-section-inner">
 
-      <div className="blog-carousel-container">
-        <div className="blog-carousel">
-          <div ref={trackRef} className="blog-track">
-            {blogPosts.map((post, i) => (
-              <div key={i} className="blog-card animate-on-scroll" style={cardStyle}>
-                <div className="blog-content">
-                  <span className="blog-date">{post.date}</span>
-                  <h4 className="blog-title">{post.title}</h4>
-                  <p className="blog-excerpt">{post.excerpt}</p>
-                  <Link to={`/blog/days-challenge/${post.link.split('/').pop()?.replace('.html','') || 'day1'}`} className="read-more">
-                    <span>Read More</span>
-                    <i className="fas fa-arrow-right"></i>
-                  </Link>
-                </div>
+        <div className="blog-main">
+          <div className="section-header">
+            <div className="section-title">
+              <span className="title-number">03</span>
+              <h2>My <span className="highlight">Blog</span></h2>
+            </div>
+            <p className="section-subtitle">My blog in learning, building and growing</p>
+          </div>
+
+          <div className="blog-header">
+            <span className="blog-kicker">Learning Log</span>
+            <h3 className="blog-section-title">Challenges <span className="gradient-text">Day-By-Day</span></h3>
+            <p className="blog-intro">
+              Small notes from the process of learning, building, and improving one step at a time.
+            </p>
+            <div className="decorative-line"></div>
+          </div>
+
+          <div className="blog-carousel-container">
+            <div className="blog-carousel">
+              <div ref={trackRef} className="blog-track">
+                {blogPosts.map((post, i) => (
+                  <div key={i} className="blog-card animate-on-scroll" style={cardStyle}>
+                    <span className="blog-card-corner blog-card-corner--tl" aria-hidden="true" />
+                    <span className="blog-card-corner blog-card-corner--tr" aria-hidden="true" />
+                    <span className="blog-card-corner blog-card-corner--bl" aria-hidden="true" />
+                    <span className="blog-card-corner blog-card-corner--br" aria-hidden="true" />
+
+                    <div className="blog-content">
+                      <div className="blog-card-meta">
+                        <span className="blog-date">{post.date}</span>
+                        <span className="blog-card-index">{String(i + 1).padStart(2, '0')}</span>
+                      </div>
+                      <h4 className="blog-title">{post.title}</h4>
+                      <p className="blog-excerpt">{post.excerpt}</p>
+                      <Link to={`/blog/days-challenge/${post.link.split('/').pop()?.replace('.html','') || 'day1'}`} className="read-more">
+                        <span>Read More</span>
+                        <i className="fas fa-arrow-right"></i>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div className="carousel-controls">
+              <button className="carousel-btn prev-btn" onClick={prevSlide} aria-label="Previous slide">
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              <div className="carousel-dots">
+                {Array.from({ length: totalSlides }).map((_, i) => (
+                  <div
+                    key={i}
+                    className={`carousel-dot${i === currentSlide ? ' active' : ''}`}
+                    onClick={() => { goTo(i); }}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button className="carousel-btn next-btn" onClick={nextSlide} aria-label="Next slide">
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div className="section-footer">
+            <Link to="/blog" className="btn btn-outline">
+              <span>View All Blog Posts</span>
+              <i className="fas fa-external-link-alt"></i>
+            </Link>
           </div>
         </div>
-
-        <div className="carousel-controls">
-          <button className="carousel-btn prev-btn" onClick={prevSlide} aria-label="Previous slide">
-            <i className="fas fa-chevron-left"></i>
-          </button>
-          <div className="carousel-dots">
-            {Array.from({ length: totalSlides }).map((_, i) => (
-              <div
-                key={i}
-                className={`carousel-dot${i === currentSlide ? ' active' : ''}`}
-                onClick={() => { goTo(i); }}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-          <button className="carousel-btn next-btn" onClick={nextSlide} aria-label="Next slide">
-            <i className="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-
-      <div className="section-footer">
-        <Link to="/blog" className="btn btn-outline">
-          <span>View All Blog Posts</span>
-          <i className="fas fa-external-link-alt"></i>
-        </Link>
       </div>
     </section>
   );
