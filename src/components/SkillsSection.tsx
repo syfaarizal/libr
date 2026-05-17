@@ -69,43 +69,19 @@ export default function SkillsSection() {
     <section id="skills" className="skills-section" ref={sectionRef}>
       <div className="skills-layout">
 
-        {/* ══════════════════════════
-            LEFT SIDEBAR
-            ══════════════════════════
-            Structure (top → bottom):
-              [02 label]
-              [red line]
-              [SKILLS text]
-              [red line]
-        ══════════════════════════ */}
         <aside className="skills-sidebar" aria-hidden="true">
-          {/* Section number */}
-          <span className="sidebar-number">02</span>
-
-          {/* Line above SKILLS */}
           <div className="sidebar-line" />
-
-          {/* Vertical label */}
           <span className="sidebar-label">SKILLS</span>
-
-          {/* Line below SKILLS */}
           <div className="sidebar-line" />
         </aside>
 
-        {/* ══════════════════════════
-            MAIN CONTENT
-        ══════════════════════════ */}
         <div className="skills-main">
-
-          {/* Header */}
           <div className="skills-header">
-            <div className="skills-badge">02</div>
+            <div className="skills-badge"><span>02</span></div>
             <h2 className="skills-title">My <span>Skills</span></h2>
             <p className="skills-subtitle">Skills I've Sharpened So Far</p>
             <div className="skills-divider" />
           </div>
-
-          {/* Filter tabs */}
           <div className="skill-tabs">
             {TABS.map(tab => (
               <button
@@ -118,8 +94,6 @@ export default function SkillsSection() {
               </button>
             ))}
           </div>
-
-          {/* Skills grid */}
           <div className="skills-grid" key={gridKey}>
             {visibleSkills.map((skill, i) => (
               <div
@@ -127,7 +101,6 @@ export default function SkillsSection() {
                 className="skill-card"
                 style={{ animationDelay: `${i * 55}ms` }}
               >
-                {/* Cyber corner brackets */}
                 <span className="card-corner tl" aria-hidden="true" />
                 <span className="card-corner tr" aria-hidden="true" />
                 <span className="card-corner bl" aria-hidden="true" />
@@ -170,8 +143,8 @@ export default function SkillsSection() {
             </p>
           </div>
 
-        </div>{/* /skills-main */}
-      </div>{/* /skills-layout */}
+        </div>
+      </div>
     </section>
   );
 }

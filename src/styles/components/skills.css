@@ -36,27 +36,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   width: 24px;
   z-index: 4;
   pointer-events: none;
 }
 
-.sidebar-number {
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: var(--primary-color, #e63946);
-  letter-spacing: 0.06em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  text-shadow: 0 0 16px rgba(230, 57, 70, 0.35);
-}
-
 .sidebar-line {
   position: relative;
   width: 1px;
-  height: 120px;
+  height: 100px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 999px;
   overflow: hidden;
@@ -69,7 +58,7 @@
   top: -30%;
   left: 50%;
   width: 3px;
-  height: 44px;
+  height: 50px;
   transform: translateX(-50%);
   border-radius: 999px;
   background: linear-gradient(
@@ -93,7 +82,7 @@
   text-orientation: mixed;
   transform: rotate(180deg);
   font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 1.05rem;
+  font-size: 1.30rem;
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -117,22 +106,30 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid var(--primary-color, #e63946);
-  border-radius: 50%;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--primary-color, #e63946);
-  margin-bottom: 1rem;
+  width: 44px;
+  height: 26px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--card-color);
+  margin-bottom: 1.2rem;
+  backdrop-filter: blur(4px);
+}
+
+.skills-badge span {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
 }
 
 .skills-title {
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
-  font-weight: 800;
-  color: var(--text-color, #fff);
-  margin: 0 0 0.6rem;
+  font-family: var(--font-head);
+  font-size: clamp(2.7rem, 4vw, 3.4rem);
+  font-weight: 900;
   letter-spacing: -0.01em;
+  color: var(--text-color);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
 }
 
 .skills-title span {
