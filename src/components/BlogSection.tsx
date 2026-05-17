@@ -85,7 +85,7 @@ export default function BlogSection() {
   };
 
   return (
-    <section id="blog" className="section-card section-reveal blog-section-shell">
+    <section id="blog" className="section-reveal blog-section-shell">
       <div className="blog-section-grid" aria-hidden="true" />
       <div className="blog-section-glow" aria-hidden="true" />
 

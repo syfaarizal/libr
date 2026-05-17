@@ -157,26 +157,24 @@
 /* Home Blog Section */
 
 .blog-section-shell {
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0)),
-        rgba(10, 10, 10, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    position: relative;
+    max-width: 1400px;
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-xl);
+    background: transparent;
+    border: none;
+    box-shadow: none;
     isolation: isolate;
+    overflow: hidden;
 }
 
 .blog-section-shell::before {
-    background: linear-gradient(90deg, rgba(224, 32, 32, 0.7), rgba(224, 32, 32, 0.18), transparent 82%);
-    height: 3px;
+    display: none;
 }
 
 .blog-section-shell:hover {
-    transform: translateY(-6px);
-    box-shadow:
-        0 24px 56px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba(224, 32, 32, 0.08);
+    transform: none;
+    box-shadow: none;
 }
 
 .blog-section-grid,
