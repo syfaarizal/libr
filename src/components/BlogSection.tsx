@@ -104,9 +104,6 @@ export default function BlogSection() {
           <p className="section-subtitle">My blog in learning, building and growing</p>
         </div>
 
-        {/* Thin vertical tick between the two headers */}
-        <div className="blog-section-divider" aria-hidden="true" />
-
         {/* Kicker + decorated title + intro */}
         <div className="blog-header">
           <span className="blog-kicker">Learning Log</span>
