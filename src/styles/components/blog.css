@@ -1,6 +1,3 @@
-/* ═══════════════════════════════════════════════
-   BLOG SECTION SHELL  —  full-bleed, no card look
-   ═══════════════════════════════════════════════ */
 .blog-section-shell {
     position: relative;
     width: 100%;
@@ -23,9 +20,6 @@
     box-shadow: none;
 }
 
-/* ───────────────────────────────────────────────
-   FULL-BLEED BACKGROUND DECORATIONS
-─────────────────────────────────────────────── */
 .blog-section-grid,
 .blog-section-glow {
     position: absolute;
@@ -49,9 +43,6 @@
         radial-gradient(ellipse 44% 40% at 84% 76%, rgba(224, 32, 32, 0.09), transparent);
 }
 
-/* ───────────────────────────────────────────────
-   INNER CONTENT WRAPPER
-─────────────────────────────────────────────── */
 .blog-section-inner {
     position: relative;
     z-index: 1;
@@ -63,9 +54,6 @@
     align-items: center;
 }
 
-/* ───────────────────────────────────────────────
-   TOP SECTION HEADER  (03 / My Blog)
-─────────────────────────────────────────────── */
 .blog-section-header {
     width: 100%;
     text-align: center;
@@ -87,9 +75,6 @@
     text-align: center;
 }
 
-/* ───────────────────────────────────────────────
-   BLOG SUB-HEADER
-─────────────────────────────────────────────── */
 .blog-header {
     width: 100%;
     text-align: center;
@@ -168,10 +153,6 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* ═══════════════════════════════════════════════
-   CAROUSEL CONTAINER
-   ─ prev/next buttons sit outside the masked area
-   ═══════════════════════════════════════════════ */
 .blog-carousel-container {
     position: relative;
     width: 100%;
@@ -180,9 +161,6 @@
     gap: 0;            /* buttons touch the carousel edges */
 }
 
-/* ───────────────────────────────────────────────
-   PREV / NEXT BUTTONS
-─────────────────────────────────────────────── */
 .carousel-btn {
     flex-shrink: 0;
     width: 50px;
@@ -209,18 +187,9 @@
     transform: scale(1.08);
 }
 
-/* ───────────────────────────────────────────────
-   CAROUSEL  —  clips overflow + EDGE FADE MASK
-─────────────────────────────────────────────── */
 .blog-carousel {
     flex: 1;           /* fills the space between the two buttons */
     overflow: hidden;
-
-    /*
-      Gradient mask: transparent at both edges so cards softly
-      disappear into the < and > buttons. The opaque middle band
-      keeps the visible cards fully readable.
-    */
     -webkit-mask-image: linear-gradient(
         to right,
         transparent 0%,
@@ -244,9 +213,6 @@
     will-change: transform;
 }
 
-/* ───────────────────────────────────────────────
-   DOTS
-─────────────────────────────────────────────── */
 .carousel-dots {
     display: flex;
     align-items: center;
@@ -271,9 +237,6 @@
     box-shadow: 0 0 14px rgba(224, 32, 32, 0.45);
 }
 
-/* ───────────────────────────────────────────────
-   BLOG CARD
-─────────────────────────────────────────────── */
 .blog-card {
     position: relative;
     display: flex;
@@ -321,9 +284,6 @@
     height: 16px;
 }
 
-/* ───────────────────────────────────────────────
-   CARD IMAGE + OVERLAID DATE BADGE
-─────────────────────────────────────────────── */
 .blog-card-image-wrap {
     position: relative;
     width: 100%;
@@ -378,9 +338,6 @@
     white-space: nowrap;
 }
 
-/* ───────────────────────────────────────────────
-   CARD BODY
-─────────────────────────────────────────────── */
 .blog-content {
     display: flex;
     flex-direction: column;
@@ -463,9 +420,6 @@
     transform: translateY(-1px);
 }
 
-/* ───────────────────────────────────────────────
-   VIEW ALL FOOTER
-─────────────────────────────────────────────── */
 .blog-section-footer {
     margin-top: 3.4rem;
     text-align: center;
@@ -481,9 +435,6 @@
     box-shadow: 0 14px 32px rgba(224, 32, 32, 0.14);
 }
 
-/* ───────────────────────────────────────────────
-   DECORATIVE LINE (compatibility)
-─────────────────────────────────────────────── */
 .decorative-line {
     width: 84px;
     height: 2px;
@@ -510,9 +461,6 @@
     to { left: 100%; }
 }
 
-/* ───────────────────────────────────────────────
-   RESPONSIVE — TABLET  (≤ 1024px)
-─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
     .blog-section-inner {
         padding: 5.5rem 3.5rem 5rem;
@@ -523,9 +471,6 @@
     }
 }
 
-/* ───────────────────────────────────────────────
-   RESPONSIVE — TABLET  (≤ 768px)
-─────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .blog-section-inner {
         padding: 4.5rem 2.4rem 4rem;
@@ -581,9 +526,6 @@
     }
 }
 
-/* ───────────────────────────────────────────────
-   RESPONSIVE — MOBILE  (≤ 480px)
-─────────────────────────────────────────────── */
 @media (max-width: 480px) {
     .blog-section-inner {
         padding: 3.5rem 1.6rem 3.5rem;
