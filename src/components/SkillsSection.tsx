@@ -1,149 +1,210 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { blogPosts } from '../data';
 
-const skills = [
-  { category: 'technical', name: 'HTML5',             desc: 'Semantic & accessible structure',                      icon: 'fas fa-code',           level: 90 },
-  { category: 'technical', name: 'CSS3',              desc: 'Flexbox, Grid, Animations, Styling',                  icon: 'fab fa-css3-alt',       level: 85 },
-  { category: 'technical', name: 'JavaScript',        desc: 'DOM, Events, Basic Logic, Interactivity',             icon: 'fab fa-js',             level: 80 },
-  { category: 'technical', name: 'Responsive Design', desc: 'Mobile-first, Flexible Layouts, Media Queries',       icon: 'fas fa-mobile-alt',     level: 88 },
-  { category: 'technical', name: 'Git & GitHub',      desc: 'Version Control, Commits, Repositories',              icon: 'fab fa-git-alt',        level: 75 },
-  { category: 'technical', name: 'QA Testing',        desc: 'Manual cross-device testing & issue tracking',        icon: 'fas fa-bug',            level: 70 },
-  { category: 'technical', name: 'React Basics',      desc: 'Component-based architecture, JSX, State Management', icon: 'fab fa-react',          level: 50 },
-  { category: 'technical', name: 'Tailwind CSS',      desc: 'Utility-first CSS Framework',                         icon: 'fas fa-wind',           level: 30 },
-  { category: 'design',    name: 'UI/UX Design',      desc: 'Focus on clean layout & visual hierarchy',            icon: 'fas fa-paint-brush',    level: 82 },
-  { category: 'design',    name: 'Typography',        desc: 'Matching brand with aesthetic',                       icon: 'fas fa-font',           level: 78 },
-  { category: 'design',    name: 'CSS Animation',     desc: 'Smooth interaction, hover, @keyframes',               icon: 'fas fa-film',           level: 85 },
-  { category: 'design',    name: 'Component Design',  desc: 'Reusable layout design',                              icon: 'fas fa-th',             level: 80 },
-  { category: 'soft',      name: 'Problem Solving',   desc: 'Enjoys debugging and solving tricky errors',          icon: 'fas fa-lightbulb',      level: 90 },
-  { category: 'soft',      name: 'Consistency',       desc: 'Steady learning routine, committed to progress',      icon: 'fas fa-calendar-check', level: 88 },
-  { category: 'soft',      name: 'Collaboration',     desc: 'Communicative and open-minded team player',           icon: 'fas fa-users',          level: 85 },
-  { category: 'soft',      name: 'Self-Learning',     desc: 'Actively explores tech and learns independently',     icon: 'fas fa-graduation-cap', level: 92 },
-  { category: 'tools',     name: 'VS Code',           desc: 'Main code editor — clean, fast, reliable',            icon: 'fas fa-code',           level: 95 },
-  { category: 'tools',     name: 'GitHub',            desc: 'For version control and project hosting',             icon: 'fab fa-github',         level: 80 },
-  { category: 'tools',     name: 'Figma',             desc: 'For wireframing and UI design',                       icon: 'fab fa-figma',          level: 65 },
-  { category: 'tools',     name: 'Notion',            desc: 'Used for planning and documentation',                 icon: 'fas fa-sticky-note',    level: 75 },
-  { category: 'tools',     name: 'ChatGPT',           desc: 'Helps refine ideas and accelerate tasks',             icon: 'fas fa-robot',          level: 85 },
-];
+export default function BlogSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(3);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-const TABS = [
-  { filter: 'all',       icon: 'fas fa-layer-group', label: 'All Skills'  },
-  { filter: 'technical', icon: 'fas fa-code',         label: 'Technical'   },
-  { filter: 'design',    icon: 'fas fa-paint-brush',  label: 'Design'      },
-  { filter: 'soft',      icon: 'fas fa-users',        label: 'Soft Skills' },
-  { filter: 'tools',     icon: 'fas fa-tools',        label: 'Tools'       },
-];
-
-export default function SkillsSection() {
-  const [activeFilter, setActiveFilter]   = useState('all');
-  const [visibleSkills, setVisibleSkills] = useState<typeof skills>(skills);
-  const [barsActive, setBarsActive]       = useState(false);
-  const [gridKey, setGridKey]             = useState(0);
-  const isAnimating = useRef(false);
-  const sectionRef  = useRef<HTMLElement>(null);
+  function getSpv() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1200) return 2;
+    return 3;
+  }
 
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setBarsActive(true); observer.disconnect(); } },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    setSlidesPerView(getSpv());
   }, []);
 
-  const applyFilter = (f: string) => {
-    if (f === activeFilter || isAnimating.current) return;
-    isAnimating.current = true;
-    setActiveFilter(f);
-    setVisibleSkills([]);
-    setTimeout(() => {
-      const next = f === 'all' ? skills : skills.filter(s => s.category === f);
-      setVisibleSkills(next);
-      setGridKey(k => k + 1);
-      setBarsActive(false);
-      setTimeout(() => { setBarsActive(true); isAnimating.current = false; }, 60);
-    }, 280);
+  // Max index we can scroll to so the last card stays fully visible
+  const maxIndex = Math.max(0, blogPosts.length - slidesPerView);
+
+  // Move one card at a time
+  const goTo = useCallback((index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector('.blog-card') as HTMLElement;
+    if (!card) return;
+    const gap = 24; // matches gap: 2.4rem / 24px in CSS
+    const offset = index * (card.offsetWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
+    track.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+    setCurrentIndex(index);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex(prev => {
+      const next = prev < maxIndex ? prev + 1 : 0;
+      goTo(next);
+      return next;
+    });
+  }, [maxIndex, goTo]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex(prev => {
+      const next = prev > 0 ? prev - 1 : maxIndex;
+      goTo(next);
+      return next;
+    });
+  }, [maxIndex, goTo]);
+
+  // Auto-advance one card at a time
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
+  // Keyboard nav
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [prevSlide, nextSlide]);
+
+  // Reset on resize
+  useEffect(() => {
+    const handler = () => {
+      setSlidesPerView(getSpv());
+      setCurrentIndex(0);
+      if (trackRef.current) {
+        trackRef.current.style.transition = 'none';
+        trackRef.current.style.transform = 'translateX(0)';
+      }
+    };
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+
+  // Each card takes up 1/slidesPerView of the track width
+  const cardStyle: React.CSSProperties = {
+    flex: `0 0 calc(${100 / slidesPerView}% - ${
+      slidesPerView > 1 ? (24 * (slidesPerView - 1)) / slidesPerView : 0
+    }px)`,
   };
 
+  // One dot per scrollable position
+  const dotCount = maxIndex + 1;
+
   return (
-    <section id="skills" className="skills-section" ref={sectionRef}>
-      <div className="skills-layout">
+    <section id="blog" className="blog-section-shell">
+      <div className="blog-section-grid" aria-hidden="true" />
+      <div className="blog-section-glow" aria-hidden="true" />
 
-        <aside className="skills-sidebar" aria-hidden="true">
-          <div className="sidebar-line" />
-          <span className="sidebar-label">SKILLS</span>
-          <div className="sidebar-line" />
-        </aside>
+      <div className="blog-section-inner">
 
-        <div className="skills-main">
-          <div className="skills-header">
-            <div className="skills-badge"><span>02</span></div>
-            <h2 className="skills-title">My <span>Skills</span></h2>
-            <p className="skills-subtitle">Skills I've Sharpened So Far</p>
-            <div className="skills-divider" />
+        {/* 03 / My Blog */}
+        <div className="section-header blog-section-header">
+          <div className="section-title">
+            <span className="title-number">03</span>
+            <h2>My <span className="highlight">Blog</span></h2>
           </div>
-          <div className="skill-tabs">
-            {TABS.map(tab => (
-              <button
-                key={tab.filter}
-                className={`skill-tab${activeFilter === tab.filter ? ' active' : ''}`}
-                onClick={() => applyFilter(tab.filter)}
-              >
-                <i className={tab.icon} />
-                <span>{tab.label}</span>
-              </button>
-            ))}
+          <p className="section-subtitle">My blog in learning, building and growing</p>
+        </div>
+
+        <div className="blog-section-divider" aria-hidden="true" />
+
+        {/* Kicker + decorated title + intro */}
+        <div className="blog-header">
+          <span className="blog-kicker">Learning Log</span>
+          <div className="blog-section-title-wrapper">
+            <div className="blog-title-decoration" aria-hidden="true" />
+            <h3 className="blog-section-title">
+              Challenges <span className="gradient-text">Day-By-Day</span>
+            </h3>
+            <div className="blog-title-decoration" aria-hidden="true" />
           </div>
-          <div className="skills-grid" key={gridKey}>
-            {visibleSkills.map((skill, i) => (
-              <div
-                key={skill.name}
-                className="skill-card"
-                style={{ animationDelay: `${i * 55}ms` }}
-              >
-                <span className="card-corner tl" aria-hidden="true" />
-                <span className="card-corner tr" aria-hidden="true" />
-                <span className="card-corner bl" aria-hidden="true" />
-                <span className="card-corner br" aria-hidden="true" />
+          <p className="blog-intro">
+            Small notes from the process of learning, building, and improving one step at a time.
+          </p>
+        </div>
 
-                <div className="skill-card-top">
-                  <div className="skill-icon-box">
-                    <i className={skill.icon} />
-                  </div>
-                  <div className="skill-text">
-                    <h3 className="skill-name">{skill.name}</h3>
-                    <p className="skill-desc">{skill.desc}</p>
-                  </div>
-                </div>
+        {/* Carousel */}
+        <div className="blog-carousel-container">
 
-                <div className="skill-progress-row">
-                  <div className="progress-track">
-                    <div
-                      className="progress-fill"
-                      style={{
-                        width: barsActive ? `${skill.level}%` : '0%',
-                        transitionDelay: barsActive ? `${i * 55 + 180}ms` : '0ms',
-                      }}
+          <button className="carousel-btn prev-btn" onClick={prevSlide} aria-label="Previous">
+            <i className="fas fa-chevron-left" />
+          </button>
+
+          {/* Overflow hidden + edge-fade mask applied here */}
+          <div className="blog-carousel">
+            <div ref={trackRef} className="blog-track">
+              {blogPosts.map((post, i) => (
+                <div key={i} className="blog-card" style={cardStyle}>
+                  <span className="blog-card-corner blog-card-corner--tl" aria-hidden="true" />
+                  <span className="blog-card-corner blog-card-corner--tr" aria-hidden="true" />
+                  <span className="blog-card-corner blog-card-corner--bl" aria-hidden="true" />
+                  <span className="blog-card-corner blog-card-corner--br" aria-hidden="true" />
+
+                  <div className="blog-card-image-wrap">
+                    <img
+                      src={(post as any).image || '/images/blog/placeholder.jpg'}
+                      alt={post.title}
+                      className="blog-image"
                     />
+                    <div className="blog-image-overlay" aria-hidden="true" />
+                    <span className="blog-date">{post.date}</span>
                   </div>
-                  <span className="progress-pct">
-                    {barsActive ? `${skill.level}%` : '0%'}
-                  </span>
+
+                  <div className="blog-content">
+                    <span className="blog-day-label">Day {i + 1}</span>
+                    <h4 className="blog-title">{post.title}</h4>
+                    <p className="blog-excerpt">{post.excerpt}</p>
+                    <div className="blog-card-footer">
+                      <Link
+                        to={`/blog/days-challenge/${
+                          post.link.split('/').pop()?.replace('.html', '') || 'day1'
+                        }`}
+                        className="read-more"
+                      >
+                        <span>Read More</span>
+                        <i className="fas fa-arrow-right" />
+                      </Link>
+                      <Link
+                        to={`/blog/days-challenge/${
+                          post.link.split('/').pop()?.replace('.html', '') || 'day1'
+                        }`}
+                        className="blog-external-btn"
+                        aria-label={`Open ${post.title}`}
+                      >
+                        <i className="fas fa-external-link-alt" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Footer */}
-          <div className="skills-footer">
-            <span className="footer-rocket">🚀</span>
-            <p>
-              Always <span className="accent">learning</span>. Always{' '}
-              <span className="accent">improving</span>.
-            </p>
-          </div>
+          <button className="carousel-btn next-btn" onClick={nextSlide} aria-label="Next">
+            <i className="fas fa-chevron-right" />
+          </button>
 
         </div>
+
+        {/* Dots — one per scrollable stop */}
+        <div className="carousel-dots">
+          {Array.from({ length: dotCount }).map((_, i) => (
+            <div
+              key={i}
+              className={`carousel-dot${i === currentIndex ? ' active' : ''}`}
+              onClick={() => goTo(i)}
+              aria-label={`Go to card ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="section-footer blog-section-footer">
+          <Link to="/blog" className="btn btn-outline">
+            <span>View All Blog Posts</span>
+            <i className="fas fa-external-link-alt" />
+          </Link>
+        </div>
+
       </div>
     </section>
   );
