@@ -57,7 +57,7 @@ export default function ProjectsSection() {
       {/* ── Section header ── */}
       <div className="section-header">
         <div className="section-title">
-          <span className="title-number">04</span>
+          <div className="project-badge"><span>04</span></div>
           <h2>My <span className="highlight">Projects</span></h2>
         </div>
         <p className="section-subtitle">
