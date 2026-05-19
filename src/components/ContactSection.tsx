@@ -44,101 +44,61 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-card">
-      <div className="section-header">
-        <div className="section-title">
-          <span className="title-number">05</span>
-          <h2>Let's <span className="highlight">Connect</span></h2>
-        </div>
-        <p className="section-subtitle">Have a project, idea, or just want to say hi? Reach me here</p>
-      </div>
-
+    <section id="contact" className="section-card contact-section">
       <div className="contact-container">
-        {/* Form */}
-        <div className="contact-form-container">
-          <form
-            ref={formRef}
-            action="https://formsubmit.co/syifairgi@gmail.com"
-            method="POST"
-            className="contact-form"
-            onSubmit={handleSubmit}
-          >
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">
-                  <i className="fas fa-user"></i>
-                  <span>Your Name</span>
-                </label>
-                <input type="text" name="name" placeholder="Enter your name" required />
-                <div className="form-line"></div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">
-                  <i className="fas fa-envelope"></i>
-                  <span>Email Address</span>
-                </label>
-                <input type="email" name="email" placeholder="your@email.com" required />
-                <div className="form-line"></div>
-              </div>
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="subject">
-                <i className="fas fa-tag"></i>
-                <span>Subject</span>
-              </label>
-              <input type="text" name="subject" placeholder="What's this about?" required />
-              <div className="form-line"></div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">
-                <i className="fas fa-comment-dots"></i>
-                <span>Your Message</span>
-              </label>
-              <textarea name="message" rows={5} placeholder="Tell me about your project or idea..." required></textarea>
-              <div className="form-line"></div>
-            </div>
-
-            <input type="hidden" name="_captcha" value="false" />
-
-            <button type="submit" className="btn btn-primary submit-btn">
-              <span>Send Message</span>
-              <i className="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-
-        {/* Info */}
+        {/* LEFT: Info */}
         <div className="contact-info-container">
-          <div className="contact-quote">
-            <div className="quote-icon">
-              <i className="fas fa-quote-left"></i>
-            </div>
-            <p className="quote-text">Great things in business are never done by one person. They're done by a team of people.</p>
-            <p className="quote-author">- Steve Jobs</p>
+          <div className="contact-left-header">
+            <span className="title-number">05</span>
+            <h2 className="contact-heading">
+              Let's <br />
+              <span className="highlight">Connect</span>
+            </h2>
+            <div className="contact-title-line"></div>
+            <p className="contact-subtitle">
+              Have a project, idea, or just want to say hi?<br />
+              I'd love to hear from you!
+            </p>
           </div>
 
           <div className="contact-details">
-            <div className="contact-card animate-on-scroll">
-              <div className="contact-icon"><i className="fas fa-envelope"></i></div>
+            <div className="contact-card">
+              <div className="contact-icon">
+                <i className="fas fa-envelope"></i>
+              </div>
               <div className="contact-content">
-                <h4>Email</h4>
+                <span className="contact-label">Email</span>
                 <p>syifairgi@gmail.com</p>
               </div>
-            </div>
-            <div className="contact-card animate-on-scroll">
-              <div className="contact-icon"><i className="fas fa-phone"></i></div>
-              <div className="contact-content">
-                <h4>Phone</h4>
-                <p>+62 858-6486-4931</p>
+              <div className="contact-arrow">
+                <i className="fas fa-arrow-up-right-from-square"></i>
               </div>
             </div>
-            <div className="contact-card animate-on-scroll">
-              <div className="contact-icon"><i className="fas fa-map-marker-alt"></i></div>
+
+            <div className="contact-card">
+              <div className="contact-icon">
+                <i className="fas fa-phone"></i>
+              </div>
               <div className="contact-content">
-                <h4>Location</h4>
+                <span className="contact-label">Phone</span>
+                <p>+62 858-6486-4931</p>
+              </div>
+              <div className="contact-arrow">
+                <i className="fas fa-arrow-up-right-from-square"></i>
+              </div>
+            </div>
+
+            <div className="contact-card">
+              <div className="contact-icon">
+                <i className="fas fa-map-marker-alt"></i>
+              </div>
+              <div className="contact-content">
+                <span className="contact-label">Location</span>
                 <p>Indonesia</p>
+              </div>
+              <div className="contact-arrow">
+                <i className="fas fa-arrow-up-right-from-square"></i>
               </div>
             </div>
           </div>
@@ -158,6 +118,73 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
+
+        {/* RIGHT: Form */}
+        <div className="contact-form-container">
+          <div className="form-header">
+            <div className="form-header-icon">
+              <i className="fas fa-paper-plane"></i>
+            </div>
+            <div className="form-header-text">
+              <h3>Send Me <span className="highlight">a Message</span></h3>
+              <p>I'll get back to you as soon as possible.</p>
+            </div>
+          </div>
+
+          <form
+            ref={formRef}
+            action="https://formsubmit.co/syifairgi@gmail.com"
+            method="POST"
+            className="contact-form"
+            onSubmit={handleSubmit}
+          >
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">
+                  <i className="fas fa-user"></i>
+                  <span>Your Name</span>
+                </label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">
+                  <i className="fas fa-envelope"></i>
+                  <span>Email Address</span>
+                </label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="subject">
+                <i className="fas fa-tag"></i>
+                <span>Subject</span>
+              </label>
+              <input type="text" id="subject" name="subject" placeholder="What's this about?" required />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">
+                <i className="fas fa-comment-dots"></i>
+                <span>Your Message</span>
+              </label>
+              <textarea id="message" name="message" rows={5} placeholder="Tell me about your project or idea..." required></textarea>
+            </div>
+
+            <input type="hidden" name="_captcha" value="false" />
+
+            <button type="submit" className="submit-btn">
+              <span>Send Message</span>
+              <i className="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Vertical side text */}
+      <div className="vertical-text-wrapper">
+        <span className="vertical-text">LET'S WORK TOGETHER</span>
+        <div className="vertical-line"></div>
       </div>
     </section>
   );
