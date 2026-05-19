@@ -57,7 +57,7 @@
 .blog-section-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 .blog-section-header .section-title {
@@ -78,7 +78,7 @@
 .blog-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 3.6rem;
+    margin-bottom: 0;
 }
 
 .blog-kicker {
@@ -195,7 +195,7 @@
         transparent 0%,
         black 10%,
         black 90%,
-        transparent 100%
+        transparent 50%
     );
     mask-image: linear-gradient(
         to right,
@@ -421,7 +421,7 @@
 }
 
 .blog-section-footer {
-    margin-top: 3.4rem;
+    margin-top: 1rem;
     text-align: center;
 }
 
