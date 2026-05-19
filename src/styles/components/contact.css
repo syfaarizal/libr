@@ -1,10 +1,9 @@
-/* =============================================
-   CONTACT SECTION — matches contact-section-example.png
-   ============================================= */
-
 .contact-section {
   position: relative;
   overflow: visible;
+  width: calc(100% - 3rem);
+  max-width: none;
+  margin: 0 1.5rem 2rem;
   padding-right: clamp(4.5rem, 6vw, 7rem);
 }
 
@@ -373,6 +372,8 @@
   }
 
   .contact-section {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 2rem;
     padding-right: 0;
   }
 
@@ -386,6 +387,11 @@
 }
 
 @media (max-width: 600px) {
+  .contact-section {
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem 2rem;
+  }
+
   .form-row {
     grid-template-columns: 1fr;
   }
