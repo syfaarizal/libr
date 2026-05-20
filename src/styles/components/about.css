@@ -31,13 +31,11 @@
   --font-mono: 'Space Mono', monospace;
 }
 
-/* ══════════════════════════════════════════
-   SECTION SHELL
-   ══════════════════════════════════════════ */
+/* SECTION SHELL */
 .about-section {
   position: relative;
   background: var(--bg-color);
-  height: 85vh;
+  height: 100vh;
   padding: 3rem 5% 5rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -173,9 +171,7 @@
   z-index: 0;
 }
 
-/* ══════════════════════════════════════════
-   SCROLL REVEAL
-   ══════════════════════════════════════════ */
+/* SCROLL REVEAL */
 .reveal {
   opacity: 0;
   transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
@@ -190,9 +186,7 @@
   transform: none;
 }
 
-/* ══════════════════════════════════════════
-   SECTION HEADER
-   ══════════════════════════════════════════ */
+/* SECTION HEADER */
 .about-header {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -266,12 +260,10 @@
   color: var(--text-secondary);
   letter-spacing: 0.025em;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 10rem;
 }
 
-/* ══════════════════════════════════════════
-   TWO-COLUMN BODY
-   ══════════════════════════════════════════ */
+/* TWO-COLUMN BODY */
 .about-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -284,9 +276,7 @@
   padding-left: 2.5rem;
 }
 
-/* ══════════════════════════════════════════
-   LEFT — TEXT BLOCK
-   ══════════════════════════════════════════ */
+/* LEFT — TEXT BLOCK */
 .about-text {
   display: flex;
   flex-direction: column;
@@ -297,7 +287,7 @@
 /* name block */
 .about-name {
   font-family: var(--font-head);
-  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-size: clamp(2.3rem, 3vw, 2.6rem);
   font-weight: 900;
   line-height: 1.15;
   color: var(--text-color);
@@ -306,7 +296,7 @@
 .about-name-red {
   color: var(--primary-color);
   display: block;
-  font-size: clamp(2.7rem, 3.2vw, 3.2rem);
+  font-size: clamp(3rem, 3.2vw, 3.5rem);
   text-shadow: 0 0 40px rgba(224, 32, 32, 0.35);
   margin-top: 7px;
 }
@@ -341,7 +331,7 @@
 
 /* lead */
 .about-lead {
-  font-size: clamp(1.8rem, 1.6vw, 1.18rem);
+  font-size: clamp(2rem, 1.6vw, 1.18rem);
   line-height: 1.78;
   color: var(--text-color);
   font-weight: 500;
@@ -355,17 +345,15 @@
   gap: 0.9rem;
 }
 .about-details p {
-  font-size: clamp(1.5rem, 1.3vw, 1rem);
+  font-size: clamp(1.8rem, 1.3vw, 1rem);
   line-height: 1.82;
   color: var(--text-secondary);
 }
 
-/* ══════════════════════════════════════════
-   STATS BAR — integrated panel
-   ══════════════════════════════════════════ */
+/* STATS BAR — integrated panel */
 .stats-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 2fr);
   gap: 0;
   border: 1px solid rgba(224, 32, 32, 0.2);
   border-top: 1.5px solid rgba(224, 32, 32, 0.5);
@@ -464,7 +452,7 @@
 
 .stat-number {
   font-family: var(--font-main);
-  font-size: clamp(1.8rem, 2.5vw, 2rem);
+  font-size: clamp(2rem, 2.5vw, 2.5rem);
   font-weight: 900;
   color: var(--primary-color);
   text-shadow: 0 0 20px rgba(224, 32, 32, 0.5);
@@ -474,7 +462,7 @@
 
 .stat-label {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
   line-height: 1.4;
   letter-spacing: 0.04em;
@@ -487,9 +475,7 @@
   letter-spacing: 0;
 }
 
-/* ══════════════════════════════════════════
-   RIGHT — AVATAR
-   ══════════════════════════════════════════ */
+/* RIGHT — AVATAR */
 .about-visual {
   display: flex;
   justify-content: center;
@@ -665,9 +651,7 @@
   50%       { opacity: 1; }
 }
 
-/* ══════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════ */
+/* RESPONSIVE */
 @media (max-width: 1100px) {
   .about-body {
     grid-template-columns: 1fr;
