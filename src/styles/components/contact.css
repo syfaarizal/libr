@@ -11,6 +11,7 @@
 .section-card-contact  {
   background: var(--surface-color);
   border-radius: var(--radius-lg);
+  margin: 60px auto;
   padding: 50px 100px;
   overflow: hidden;
   border: 1px solid var(--border-color);
