@@ -81,6 +81,26 @@
     margin-bottom: 0;
 }
 
+.blog-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 26px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--card-color);
+  margin-bottom: 1.2rem;
+  backdrop-filter: blur(4px);
+}
+
+.blog-badge span {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+}
+
 .blog-kicker {
     display: inline-flex;
     align-items: center;

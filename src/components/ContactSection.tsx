@@ -44,13 +44,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-card contact-section">
+    <section id="contact" className="section-card-contact contact-section">
       <div className="contact-container">
 
         {/* LEFT: Info */}
         <div className="contact-info-container">
           <div className="contact-left-header">
-            <span className="title-number">05</span>
+            <div className="contact-badge"><span>05</span></div>
             <h2 className="contact-heading">
               Let's <br />
               <span className="highlight">Connect</span>

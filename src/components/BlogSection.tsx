@@ -98,7 +98,7 @@ export default function BlogSection() {
         {/* 03 / My Blog */}
         <div className="section-header blog-section-header">
           <div className="section-title">
-            <span className="title-number">03</span>
+            <div className="blog-badge"><span>03</span></div>
             <h2>My <span className="highlight">Blog</span></h2>
           </div>
           <p className="section-subtitle">My blog in learning, building and growing</p>

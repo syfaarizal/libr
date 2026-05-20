@@ -1,10 +1,35 @@
 .contact-section {
   position: relative;
   overflow: visible;
-  width: calc(100% - 3rem);
-  max-width: none;
-  margin: 0 1.5rem 2rem;
+  width: min(100%, 1400px);
+  max-width: calc(100% - 3rem);
+  margin: 0 auto 2rem;
   padding-right: clamp(4.5rem, 6vw, 7rem);
+  box-sizing: border-box;
+}
+
+.section-card-contact  {
+  background: var(--surface-color);
+  border-radius: var(--radius-lg);
+  padding: 50px 100px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.section-card-contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.section-card-contact:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
 }
 
 /* Two-column layout: info LEFT, form RIGHT */
@@ -30,19 +55,24 @@
   gap: 0;
 }
 
-.title-number {
+.contact-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 28px;
-  background: var(--primary-color);
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 6px;
-  margin-bottom: 1.6rem;
-  letter-spacing: 0.05em;
+  width: 44px;
+  height: 26px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  background: var(--card-color);
+  margin-bottom: 1.2rem;
+  backdrop-filter: blur(4px);
+}
+
+.contact-badge span {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
 }
 
 .contact-heading {
@@ -60,7 +90,7 @@
 /* Red underline beneath "Connect" */
 .contact-title-line {
   width: 120px;
-  height: 3px;
+  height: 2px;
   background: var(--gradient-primary);
   border-radius: 2px;
   margin-bottom: 2.4rem;
@@ -161,8 +191,8 @@
   width: 48px;
   height: 48px;
   background: var(--surface-color);
-  border: 1.5px solid var(--border-color);
-  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  border-radius: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,7 +213,7 @@
 
 .contact-form-container {
   background: var(--card-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--primary-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
 }
@@ -373,7 +403,8 @@
 
   .contact-section {
     width: calc(100% - 2rem);
-    margin: 0 1rem 2rem;
+    max-width: calc(100% - 2rem);
+    margin: 0 auto 2rem;
     padding-right: 0;
   }
 
@@ -389,7 +420,8 @@
 @media (max-width: 600px) {
   .contact-section {
     width: calc(100% - 1rem);
-    margin: 0 0.5rem 2rem;
+    max-width: calc(100% - 1rem);
+    margin: 0 auto 2rem;
   }
 
   .form-row {
