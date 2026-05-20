@@ -24,17 +24,21 @@ const skills = [
   { category: 'tools',     name: 'ChatGPT',           desc: 'Helps refine ideas and accelerate tasks',             icon: 'fas fa-robot',          level: 85 },
 ];
 
-const TABS = [
-  { filter: 'all',       icon: 'fas fa-layer-group', label: 'All Skills'  },
-  { filter: 'technical', icon: 'fas fa-code',         label: 'Technical'   },
-  { filter: 'design',    icon: 'fas fa-paint-brush',  label: 'Design'      },
-  { filter: 'soft',      icon: 'fas fa-users',        label: 'Soft Skills' },
-  { filter: 'tools',     icon: 'fas fa-tools',        label: 'Tools'       },
+type SkillCategory = 'technical' | 'design' | 'soft' | 'tools';
+
+const TABS: Array<{ filter: SkillCategory; icon: string; label: string }> = [
+  { filter: 'technical', icon: 'fas fa-code',        label: 'Technical'   },
+  { filter: 'design',    icon: 'fas fa-paint-brush', label: 'Design'      },
+  { filter: 'soft',      icon: 'fas fa-users',       label: 'Soft Skills' },
+  { filter: 'tools',     icon: 'fas fa-tools',       label: 'Tools'       },
 ];
 
 export default function SkillsSection() {
-  const [activeFilter, setActiveFilter]   = useState('all');
-  const [visibleSkills, setVisibleSkills] = useState<typeof skills>(skills);
+  const defaultCategory: SkillCategory = 'technical';
+  const [activeFilter, setActiveFilter]   = useState<SkillCategory>(defaultCategory);
+  const [visibleSkills, setVisibleSkills] = useState<typeof skills>(
+    skills.filter(skill => skill.category === defaultCategory)
+  );
   const [barsActive, setBarsActive]       = useState(false);
   const [gridKey, setGridKey]             = useState(0);
   const isAnimating = useRef(false);
@@ -51,13 +55,13 @@ export default function SkillsSection() {
     return () => observer.disconnect();
   }, []);
 
-  const applyFilter = (f: string) => {
+  const applyFilter = (f: SkillCategory) => {
     if (f === activeFilter || isAnimating.current) return;
     isAnimating.current = true;
     setActiveFilter(f);
     setVisibleSkills([]);
     setTimeout(() => {
-      const next = f === 'all' ? skills : skills.filter(s => s.category === f);
+      const next = skills.filter(s => s.category === f);
       setVisibleSkills(next);
       setGridKey(k => k + 1);
       setBarsActive(false);
@@ -86,6 +90,7 @@ export default function SkillsSection() {
             {TABS.map(tab => (
               <button
                 key={tab.filter}
+                type="button"
                 className={`skill-tab${activeFilter === tab.filter ? ' active' : ''}`}
                 onClick={() => applyFilter(tab.filter)}
               >
