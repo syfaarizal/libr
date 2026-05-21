@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/assets/sicoder-logo.png" alt="SICODER Logo" />
+            <span className="footer-logo-text">LIBR</span>
             <div className="logo-glow"></div>
           </div>
           <p className="footer-tagline">Transforming ideas into digital experiences</p>

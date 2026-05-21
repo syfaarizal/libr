@@ -9,6 +9,7 @@
 }
 
 .section-card-contact  {
+  position: relative;
   background: var(--surface-color);
   border-radius: var(--radius-lg);
   margin: 60px auto;
