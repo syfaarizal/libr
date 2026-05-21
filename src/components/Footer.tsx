@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="logo-glow"></div>
           </div>
           <p className="footer-tagline">Transforming ideas into digital experiences</p>
-          <p className="footer-credit">© 2026 SICODER. All rights reserved.</p>
+          <p className="footer-credit">© 2026 LIBR All rights reserved.</p>
         </div>
 
         <div className="footer-links">

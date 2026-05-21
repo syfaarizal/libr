@@ -63,11 +63,11 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/assets/img/sicoder-logo.png" alt="SICODER Logo" />
+            <span className="footer-logo-text">LIBR</span>
             <div className="logo-glow" />
           </div>
           <p className="footer-tagline">Building the web, one project at a time</p>
-          <p className="footer-credit">© 2026 SICODER. All projects open-source.</p>
+          <p className="footer-credit">© 2026 LIBR All projects open-source.</p>
         </div>
 
         <div className="footer-links">

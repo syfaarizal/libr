@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
 export const projects: Project[] = [
   {
     category: 'web',
-    title: 'Login Page Showcase — SICODER',
+    title: 'Login Page Showcase — LIBR',
     description: 'My collection of creative login page templates built with clean and modern front-end code.',
     tags: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Responsive'],
     demo: 'https://syfaarizal.github.io/showcase-login-page/',
