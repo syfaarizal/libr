@@ -398,7 +398,7 @@ body {
 .description {
   font-size: clamp(1.4rem, 1.7vw, 1.6rem);
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--text-secondary);
   border-left: 2px solid rgba(224, 32, 32, 0.55);
   box-shadow: -6px 0 18px -4px rgba(224, 32, 32, 0.25);
   padding-left: 1.1rem;

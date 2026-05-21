@@ -156,10 +156,10 @@
 
 /* Theme-specific adjustments */
 .light-theme .header {
-    background: rgba(244, 246, 248, 0.88);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
 }
 
 .light-theme .section-card {

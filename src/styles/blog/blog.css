@@ -993,7 +993,7 @@
 .blog-section-shell .blog-excerpt {
   font-size: 1.45rem;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--text-secondary);
   margin-bottom: 2rem;
   flex: 1;
 }

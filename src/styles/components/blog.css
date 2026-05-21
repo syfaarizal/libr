@@ -170,7 +170,7 @@
     margin: 0 auto;
     font-size: 1.5rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
 }
 
 .blog-carousel-container {
@@ -188,7 +188,7 @@
     border-radius: 50%;
     background: rgba(18, 18, 18, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #fff;
+    color: var(--text-secondary);
     font-size: 1.5rem;
     cursor: pointer;
     display: flex;
@@ -385,7 +385,7 @@
 .blog-excerpt {
     font-size: 1.42rem;
     line-height: 1.75;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-secondary);
     flex: 1;
     margin-bottom: 1.8rem;
 }
