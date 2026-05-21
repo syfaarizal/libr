@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import { Theme } from '../types';
 
 export function useTheme() {
@@ -9,12 +9,12 @@ export function useTheme() {
     return 'dark';
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.body.classList.remove('dark-theme', 'light-theme');
     document.body.classList.add(`${theme}-theme`);
     localStorage.setItem('theme', theme);
 
-    const metaColor = theme === 'light' ? '#f8f9fa' : '#0a0a0a';
+    const metaColor = theme === 'light' ? '#e7eaee' : '#0a0a0a';
     let metaEl = document.querySelector('meta[name="theme-color"]');
     if (!metaEl) {
       metaEl = document.createElement('meta');

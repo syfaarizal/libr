@@ -54,17 +54,31 @@ body {
     font-size: 1.6rem;
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color var(--transition-base), color var(--transition-base);
+    transition: background var(--transition-theme), color var(--transition-theme);
     position: relative;
 }
 
 /* Global theme transition — biarkan di sini bukan di komponen */
 body * {
     transition:
-        background-color var(--transition-base),
-        color var(--transition-base),
-        border-color var(--transition-base),
-        box-shadow var(--transition-base);
+        background-color var(--transition-theme),
+        color var(--transition-theme),
+        border-color var(--transition-theme),
+        box-shadow var(--transition-theme),
+        opacity var(--transition-theme);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    body,
+    body * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
 
 /* Text selection */
