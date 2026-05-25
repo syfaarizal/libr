@@ -152,19 +152,19 @@ export default function AboutSection() {
             </h3>
             <div className="about-accent-line" />
             <p className="about-lead">
-              I'm a passionate front-end developer and UI designer with a focus on creating clean,
-              responsive, and user-friendly web applications.
+              I’m a front-end developer and digital builder focused on crafting modern, interactive, and 
+              high-performance web experiences.
             </p>
           </div>
 
           <div className="about-details">
             <p>
-              Turning ideas into real products through code and design.
-              Always learning and sharpening my front-end skills (HTML, CSS, JavaScript, and modern frameworks).
+              Beyond writing code, I enjoy turning ideas into scalable digital products through design, problem-solving, and system thinking. 
+              My current stack includes JavaScript, React, Next.js, UI/UX design, and modern web technologies.
             </p>
             <p>
-              My goal is to build intuitive interfaces that enhance user experience while
-              maintaining high performance and accessibility standards.
+              I care deeply about clean interfaces, smooth user experience, accessibility, and meaningful interactions — 
+              because great products are not just functional, they feel alive.
             </p>
           </div>
 
