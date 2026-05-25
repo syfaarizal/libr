@@ -152,19 +152,17 @@ export default function AboutSection() {
             </h3>
             <div className="about-accent-line" />
             <p className="about-lead">
-              I’m a front-end developer and digital builder focused on crafting modern, interactive, and 
-              high-performance web experiences.
+              I’m a front-end developer and digital builder focused on creating modern, interactive, and high-performance web experiences.
             </p>
           </div>
 
           <div className="about-details">
             <p>
-              Beyond writing code, I enjoy turning ideas into scalable digital products through design, problem-solving, and system thinking. 
-              My current stack includes JavaScript, React, Next.js, UI/UX design, and modern web technologies.
+              I turn ideas into scalable digital products through code, design, and system thinking — using technologies like 
+              JavaScript, React, Next.js, and modern UI/UX practices.
             </p>
             <p>
-              I care deeply about clean interfaces, smooth user experience, accessibility, and meaningful interactions — 
-              because great products are not just functional, they feel alive.
+              Focused on clean interfaces, smooth interactions, accessibility, and meaningful user experiences.
             </p>
           </div>
 

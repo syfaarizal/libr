@@ -82,7 +82,7 @@ export const projects: Project[] = [
     title: 'Login Page Showcase — LIBR',
     description: 'My collection of creative login page templates built with clean and modern front-end code.',
     tags: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Responsive'],
-    demo: 'https://syfaarizal.github.io/showcase-login-page/',
+    demo: 'https://loginlab.vercel.app/',
     code: 'https://github.com/syfaarizal/showcase-login-page',
     image: '/assets/showcase-review.png',
   },
