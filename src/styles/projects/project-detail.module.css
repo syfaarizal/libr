@@ -81,6 +81,7 @@
   margin-top: 8rem;
   position: relative;
   overflow: hidden;
+  padding-block: clamp(4rem, 8vw, 8rem);
 }
 
 .projectDetailHero::before {
@@ -113,7 +114,7 @@
   gap: var(--spacing-md);
   width: 100%;
   max-width: 920px;
-  /* margin-inline: auto; */
+  margin-inline: auto;
   position: relative;
   z-index: 1;
 }
@@ -841,27 +842,142 @@
 }
 
 @media (max-width: 992px) {
+  .projectDetailHero {
+    min-height: auto;
+    padding-block: 5rem 4rem;
+  }
+  .heroContent,
+  .relatedProjects,
+  .projectContentSection {
+    max-width: 100%;
+  }
   .projectContentSection { grid-template-columns: 1fr; }
   .challengeSolution      { grid-template-columns: 1fr; }
-  .projectSidebar         { position: static; }
+  .projectSidebar         {
+    position: static;
+    gap: 2rem;
+  }
+  .galleryGrid {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 @media (max-width: 768px) {
   .detailPageMain {
-    padding-inline: 0;
+    padding-inline: 0.8rem;
+  }
+  .projectDetailHero {
+    margin-top: 7rem;
+    padding-block: 4.2rem 3.4rem;
+  }
+  .heroContent {
+    gap: 1.6rem;
+  }
+  .backToProjects {
+    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .achievementBadge {
+    top: 1.6rem;
+    right: 1.6rem;
   }
   .projectStatusBadge {
     display: inline-flex;
     margin: 1rem 0 0;
   }
   :global(.header).projectDetailHeader { padding: 1.4rem 5%; }
-  .projectMetaDetail { flex-direction: column; gap: var(--spacing-sm); }
+  .projectMetaDetail {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: stretch;
+  }
+  .metaItem {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .detailSection,
+  .sidebarCard {
+    padding: 1.8rem 1.5rem;
+  }
+  .detailSection h2 {
+    font-size: 2.1rem;
+    line-height: 1.3;
+  }
+  .challenge,
+  .solution {
+    padding: 1.6rem;
+  }
   .techDetailGrid    { grid-template-columns: repeat(2, 1fr); }
   .featureGrid       { grid-template-columns: 1fr; }
   .statsGrid         { grid-template-columns: repeat(2, 1fr); }
   .shareButtons      { grid-template-columns: 1fr; }
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+  .relatedGrid {
+    gap: 1.4rem;
+  }
+  .toast {
+    top: 1.4rem;
+    right: 1.2rem;
+    left: 1.2rem;
+    width: auto;
+  }
+  .backToTop {
+    right: 1.6rem;
+    bottom: 1.6rem;
+  }
 }
 @media (max-width: 576px) {
+  .projectDetailHero {
+    padding-block: 3.8rem 2.8rem;
+  }
+  .heroContent {
+    gap: 1.4rem;
+  }
+  .achievementBadge {
+    position: static;
+    width: fit-content;
+    margin-bottom: 1.4rem;
+  }
+  .backToProjects {
+    width: 100%;
+    justify-content: center;
+  }
+  .projectCategoryBadge,
+  .projectStatusBadge {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+  }
+  .projectMetaDetail {
+    padding: 1.4rem 0;
+  }
+  .metaItem {
+    font-size: 1.3rem;
+    padding: 0.9rem 1rem;
+  }
   .techDetailGrid { grid-template-columns: 1fr; }
   .galleryGrid    { grid-template-columns: 1fr; }
+  .galleryItem img {
+    height: 190px;
+  }
   .relatedGrid    { grid-template-columns: 1fr; }
+  .projectLinkBtn,
+  .shareBtn {
+    font-size: 1.3rem;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .backToTop {
+    width: 44px;
+    height: 44px;
+    right: 1.2rem;
+    bottom: 1.2rem;
+  }
 }
