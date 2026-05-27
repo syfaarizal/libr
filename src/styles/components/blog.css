@@ -568,6 +568,22 @@
         padding: 3.5rem 1.6rem 3.5rem;
     }
 
+    .blog-carousel-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 1.2rem;
+    }
+
+    .blog-carousel {
+        order: 1;
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .carousel-btn {
+        order: 2;
+    }
+
     .carousel-btn {
         width: 38px;
         height: 38px;
@@ -594,6 +610,10 @@
         height: 160px;
     }
 
+    .blog-content {
+        padding: 1.6rem 1.4rem;
+    }
+
     .blog-day-label {
         font-size: 1.05rem;
     }
@@ -604,6 +624,7 @@
 
     .blog-excerpt {
         font-size: 1.32rem;
+        line-height: 1.68;
     }
 
     .blog-intro,

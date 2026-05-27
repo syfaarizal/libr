@@ -362,8 +362,16 @@
 
 @media (max-width: 640px) {
   .skills-sidebar  { display: none; }
-  .skills-layout   { padding: 0 1rem; }
+  .skills-layout   {
+    max-width: 100% auto;
+    padding: 0;
+  }
+  .skills-main     {
+    width: min(100%, 60rem);
+    margin: 0 auto;
+  }
   .skills-grid     { grid-template-columns: 1fr; }
+  .skill-tabs      { justify-content: center; }
   .skill-tab span  { display: none; }
   .skill-tab       { padding: 0.65rem 0.9rem; }
 }
