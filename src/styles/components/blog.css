@@ -483,11 +483,28 @@
 
 @media (max-width: 1024px) {
     .blog-section-inner {
-        padding: 5.5rem 3.5rem 5rem;
+        padding: 5.5rem 3rem 5rem;
     }
 
     .blog-card-image-wrap {
         height: 190px;
+    }
+
+    .blog-carousel {
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 7%,
+            black 93%,
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 7%,
+            black 93%,
+            transparent 100%
+        );
     }
 }
 

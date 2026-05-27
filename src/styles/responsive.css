@@ -34,8 +34,9 @@
     html { font-size: 58%; }
 
     .header { padding: 2rem 5%; }
+    .nav-menu { margin-right: 50px; }
 
-    .theme-toggle { top: 10px; right: 20px; }
+    .theme-toggle { top: 20px; right: 20px; }
 
     .home { gap: var(--spacing-lg); }
     .home .home-content .title { font-size: 5rem; }
@@ -43,19 +44,30 @@
 
     .image-container { width: 300px; height: 300px; }
     .glow-effect     { width: 350px; height: 350px; }
+    .logo-3d        { width: 280px; height: 280px; }
+    .logo-sphere    { width: 350px; height: 330px; }
+    .hero-side-label--right { width: 8rem; padding: 0.4rem 1.2rem; }
+    .scroll-down     { display: none; }
 
+    .about-section { height: auto; }
     .about-content { gap: var(--spacing-lg); }
     .avatar-container { width: 350px; height: 350px; }
 
-    .stats-container   { grid-template-columns: repeat(2, 1fr); }
+    .stats-container   { grid-template-columns: repeat(3, 1fr); }
     .skills-grid       { grid-template-columns: repeat(2, 1fr); }
-    .projects-grid     { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid     { gap: 2rem; }
     .contact-container { gap: var(--spacing-lg); }
-    .footer-container  { grid-template-columns: 1fr 2fr; }
+    .footer-container  { grid-template-columns: repeat(3, 1fr); }
     .stats-bar         { width: calc(100% - 6rem); }
     .section-card,
     .section-card-contact,
-    .blog-section-shell { width: min(100%, 1200px); }
+    .blog-section-shell {
+        width: min(100%, auto);
+        margin: 0 auto;
+    }
+
+    .projects-section  { padding: 5rem 5rem; }
+    .projects-sidebar { left: 1.7rem; }
 }
 
 /* max-width: 992px (Tablet Landscape) */
