@@ -60,16 +60,16 @@ export default function Footer() {
             <input type="hidden" name="_subject" value="New Subscriber for SICODER!" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="email" name="email" placeholder="Your email address" required />
-            <button type="submit"><i className="fas fa-paper-plane"></i></button>
+            <button type="submit" aria-label="Subscribe to newsletter" title="Subscribe to newsletter"><i className="fas fa-paper-plane"></i></button>
           </form>
         </div>
       </div>
 
       <div className="footer-bottom">
         <div className="footer-socials">
-          <a href="https://www.linkedin.com/in/syifaarizal/" target="_blank" rel="noreferrer"><i className="fab fa-linkedin"></i></a>
-          <a href="https://github.com/syfaarizal" target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/syfaarizal/" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/syifaarizal/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i className="fab fa-linkedin"></i></a>
+          <a href="https://github.com/syfaarizal" target="_blank" rel="noopener noreferrer" title="GitHub"><i className="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/syfaarizal/" target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram"></i></a>
         </div>
         <p className="footer-copyright">Made with ❤️ and <code>&lt;/&gt;</code> by Syifa F.A</p>
       </div>

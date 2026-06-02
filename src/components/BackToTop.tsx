@@ -17,7 +17,8 @@ export default function BackToTop() {
       id="backToTop"
       className={`back-to-top${visible ? ' visible' : ''}`}
       onClick={(e) => { e.preventDefault(); scrollToTop(); }}
-      aria-hidden={!visible}
+      aria-label="Back to top"
+      title="Back to top"
     >
       <img src="/assets/LIBR-logo-nobg.png" alt="Logo LIBR" />
     </a>

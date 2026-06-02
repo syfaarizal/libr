@@ -107,13 +107,13 @@ export default function ContactSection() {
             <div className="contact-socials">
               <h4>Follow Me</h4>
               <div className="social-links">
-                <a href="https://www.linkedin.com/in/syifaarizal/" className="social-link" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/syifaarizal/" className="social-link" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                   <i className="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/syfaarizal" className="social-link" target="_blank" rel="noreferrer">
+                <a href="https://github.com/syfaarizal" className="social-link" target="_blank" rel="noopener noreferrer" title="GitHub">
                   <i className="fab fa-github"></i>
                 </a>
-                <a href="https://www.instagram.com/syfaarizal/" className="social-link" target="_blank" rel="noreferrer">
+                <a href="https://www.instagram.com/syfaarizal/" className="social-link" target="_blank" rel="noopener noreferrer" title="Instagram">
                   <i className="fab fa-instagram"></i>
                 </a>
               </div>

@@ -244,7 +244,6 @@ export default function ProjectsPage() {
       {/* Loading Screen */}
       <div
         className={`${styles.loadingScreen} ${!isLoading ? styles.loaded : ''}`}
-        aria-hidden={!isLoading ? 'true' : 'false'}
       >
         <div className={styles.loadingSpinner}>
           <div className={styles.spinnerCircle} />
@@ -638,6 +637,7 @@ export default function ProjectsPage() {
               href="https://github.com/syfaarizal"
               target="_blank"
               rel="noopener noreferrer"
+              title="GitHub"
             >
               <i className="fab fa-github" />
             </a>
@@ -645,6 +645,7 @@ export default function ProjectsPage() {
               href="https://www.linkedin.com/in/syifaarizal/"
               target="_blank"
               rel="noopener noreferrer"
+              title="LinkedIn"
             >
               <i className="fab fa-linkedin" />
             </a>
@@ -652,6 +653,7 @@ export default function ProjectsPage() {
               href="https://www.instagram.com/syfaarizal/"
               target="_blank"
               rel="noopener noreferrer"
+              title="Instagram"
             >
               <i className="fab fa-instagram" />
             </a>

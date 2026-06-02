@@ -90,7 +90,7 @@ export default function LoadingScreen() {
   if (removed) return null;
 
   return (
-    <div className={`ls-root${loaded ? ' loaded' : ''}`} aria-hidden={loaded}>
+    <div className={`ls-root${loaded ? ' loaded' : ''}`}>
       <div className="ls-orb ls-orb--left" />
       <div className="ls-orb ls-orb--right" />
       <div className="ls-frame" />

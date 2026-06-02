@@ -110,10 +110,10 @@ function Footer() {
 
       <div className="footer-bottom">
         <div className="footer-socials">
-          <a href="https://github.com/syfaarizal" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" /></a>
-          <a href="https://codepen.io/syfaarizal" target="_blank" rel="noopener noreferrer"><i className="fab fa-codepen" /></a>
-          <a href="https://www.linkedin.com/in/syifaarizal/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin" /></a>
-          <a href="https://www.instagram.com/syfaarizal/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a>
+          <a href="https://github.com/syfaarizal" target="_blank" rel="noopener noreferrer" title="GitHub"><i className="fab fa-github" /></a>
+          <a href="https://codepen.io/syfaarizal" target="_blank" rel="noopener noreferrer" title="CodePen"><i className="fab fa-codepen" /></a>
+          <a href="https://www.linkedin.com/in/syifaarizal/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i className="fab fa-linkedin" /></a>
+          <a href="https://www.instagram.com/syfaarizal/" target="_blank" rel="noopener noreferrer" title="Instagram"><i className="fab fa-instagram" /></a>
         </div>
         <p className="footer-copyright">Made with ❤️ and <code>&lt;/&gt;</code> by Syifa F.A</p>
       </div>
@@ -163,7 +163,7 @@ export default function ProjectDetail5() {
       {toast && <Toast message={toast} onHide={() => setToast(null)} />}
 
       {/* Loading Screen */}
-      <div className={`${styles.loadingScreen} ${!isLoading ? styles.loaded : ''}`} aria-hidden={!isLoading}>
+      <div className={`${styles.loadingScreen} ${!isLoading ? styles.loaded : ''}`}>
         <div className={styles.loadingSpinner}>
           <div className={styles.spinnerCircle} />
           <div className={styles.spinnerText}>LOADING</div>
